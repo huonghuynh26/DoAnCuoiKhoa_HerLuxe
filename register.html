@@ -4,18 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Login</title>
+    <title>Register</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="register.css" />
 
     <!-- Font Awesome -->
     <link
@@ -26,10 +27,12 @@
 
   <body>
     <div class="page">
-      <!-- HEADER -->
+      <!-- ================= HEADER ================= -->
       <header class="header">
         <div class="logo">
-          <a href="#"> <img src="./images/logo3.png" alt="" /> </a>
+          <a href="#">
+            <img src="./images/logo3.png" alt="HerLuxe Logo" />
+          </a>
         </div>
 
         <nav class="navbar">
@@ -45,7 +48,7 @@
         </nav>
 
         <div class="header-right">
-          <a href="#">
+          <a href="login.html">
             <i class="fa-solid fa-user"></i>
             Sign In
           </a>
@@ -58,18 +61,34 @@
         </div>
       </header>
 
-      <!-- LOGIN CONTENT -->
-      <main class="login-section">
-        <!-- LEFT -->
-        <div class="login-form">
-          <h1>Login</h1>
+      <!-- ================= REGISTER SECTION ================= -->
+      <main class="register-section">
+        <!-- LEFT: REGISTER FORM -->
+        <div class="register-form">
+          <h1>Register</h1>
 
+          <!-- NAME -->
+          <div class="form-group">
+            <label for="name">Name</label>
+
+            <input type="text" id="name" placeholder="Full Name" />
+          </div>
+
+          <!-- EMAIL -->
           <div class="form-group">
             <label for="email">Email</label>
 
             <input type="email" id="email" placeholder="name@mail.com" />
           </div>
 
+          <!-- PHONE -->
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+
+            <input type="tel" id="phone" placeholder="000-000-000" />
+          </div>
+
+          <!-- PASSWORD -->
           <div class="form-group password-group">
             <label for="password">Password</label>
 
@@ -82,24 +101,29 @@
             </div>
           </div>
 
-          <button class="login-button">Login</button>
+          <!-- REGISTER BUTTON -->
+          <button class="register-button">Create My Account</button>
 
-          <p class="register-text">
-            Don't have an account?
-            <a href="register.html">Login here</a>
+          <!-- LOGIN -->
+          <p class="login-text">
+            Already have an account?
+            <a href="login.html">Login here</a>
           </p>
         </div>
 
-        <!-- RIGHT -->
-        <div class="login-card">
+        <!-- RIGHT: REGISTER CARD -->
+        <div class="register-card">
           <div class="card-border">
-            <div class="logo-login-card">
-              <img src="./images/logo3.png" alt="" />
+            <!-- LOGO -->
+            <div class="logo-register-card">
+              <img src="./images/logo3.png" alt="HerLuxe Logo" />
             </div>
-            <h2>Login</h2>
+
+            <h2>Register</h2>
 
             <p>Welcome to HerLuxe</p>
 
+            <!-- SOCIAL -->
             <div class="social-icons">
               <a href="#">
                 <i class="fa-brands fa-facebook-f"></i>
@@ -117,10 +141,13 @@
         </div>
       </main>
 
-      <!-- FOOTER -->
+      <!-- ================= FOOTER ================= -->
       <footer class="footer">
+        <!-- FOOTER LOGO -->
         <div class="footer-logo">
-          <a href="#"> <img src="./images/logo1.png" alt="" /> </a>
+          <a href="#">
+            <img src="./images/logo1.png" alt="HerLuxe Logo" />
+          </a>
         </div>
 
         <div class="footer-line"></div>
@@ -129,7 +156,9 @@
           <!-- COLUMN 1 -->
           <div class="footer-column">
             <a href="#">ABOUT US</a>
+
             <a href="#">FAQ</a>
+
             <a href="#">CONTACT</a>
           </div>
 
@@ -138,6 +167,7 @@
             <h3>CUSTOMER SERVICE</h3>
 
             <p>info@car.com</p>
+
             <p>240-865-3730</p>
           </div>
 
@@ -166,13 +196,15 @@
           </div>
         </div>
 
-        <div class="copyright">2021 Autohunt. All Rights reserved</div>
+        <!-- COPYRIGHT -->
+        <div class="copyright">2021 HerLuxe. All Rights reserved</div>
       </footer>
     </div>
 
-    <!-- PASSWORD SCRIPT -->
+    <!-- ================= PASSWORD SCRIPT ================= -->
     <script>
       const password = document.getElementById("password");
+
       const showPassword = document.getElementById("showPassword");
 
       showPassword.addEventListener("click", function () {
