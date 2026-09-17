@@ -1,23 +1,30 @@
 <!doctype html>
+
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Login</title>
+    <title>Login | HerLuxe</title>
 
     <!-- Font -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
 
     <!-- CSS -->
+
     <link rel="stylesheet" href="style.css" />
 
     <!-- Font Awesome -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -26,52 +33,74 @@
 
   <body>
     <div class="page">
-      <!-- HEADER -->
+      <!-- =========================
+         HEADER
+    ========================== -->
+
       <header class="header">
+        <!-- LOGO -->
+
         <div class="logo">
-          <a href="#"> <img src="./images/logo3.png" alt="" /> </a>
+          <a href="#">
+            <img src="./images/logo3.png" alt="HerLuxe" />
+          </a>
         </div>
 
+        <!-- NAVBAR -->
+
         <nav class="navbar">
-          <a href="#">New Cars</a>
-          <a href="#">Used Cars</a>
-          <a href="#">Compare</a>
-          <a href="#">Sell</a>
+          <a href="#"> New Arrivals </a>
+
+          <a href="#"> Makeup </a>
+
+          <a href="#"> Skincare </a>
+
+          <a href="#"> Best Sellers </a>
 
           <a href="#" class="article">
-            Article
+            Collection
+
             <i class="fa-solid fa-chevron-down"></i>
           </a>
         </nav>
 
+        <!-- HEADER RIGHT -->
+
         <div class="header-right">
           <a href="#">
             <i class="fa-solid fa-user"></i>
+
             Sign In
           </a>
 
           <a href="#">
             <i class="fa-solid fa-globe"></i>
+
             EN
+
             <i class="fa-solid fa-chevron-down"></i>
           </a>
         </div>
       </header>
 
-      <!-- LOGIN CONTENT -->
+      <!-- =========================
+         LOGIN CONTENT
+    ========================== -->
+
       <main class="login-section">
-        <!-- LEFT -->
+        <!-- LEFT - LOGIN FORM -->
+
         <div class="login-form">
           <h1>Login</h1>
 
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email"> Email </label>
 
             <input type="email" id="email" placeholder="name@mail.com" />
           </div>
 
           <div class="form-group password-group">
-            <label for="password">Password</label>
+            <label for="password"> Password </label>
 
             <div class="password-box">
               <input type="password" id="password" placeholder="password" />
@@ -86,19 +115,26 @@
 
           <p class="register-text">
             Don't have an account?
-            <a href="register.html">Login here</a>
+
+            <a href="register.html"> Register here </a>
           </p>
         </div>
 
-        <!-- RIGHT -->
+        <!-- RIGHT - LOGIN CARD -->
+
         <div class="login-card">
           <div class="card-border">
-            <div class="logo-login-card">
-              <img src="./images/logo3.png" alt="" />
-            </div>
-            <h2>Login</h2>
+            <!-- LOGO -->
 
-            <p>Welcome to HerLuxe</p>
+            <div class="logo-login-card">
+              <img src="./images/logo3.png" alt="HerLuxe" />
+            </div>
+
+            <h2>Welcome</h2>
+
+            <p>Discover your beauty</p>
+
+            <!-- SOCIAL -->
 
             <div class="social-icons">
               <a href="#">
@@ -117,37 +153,53 @@
         </div>
       </main>
 
-      <!-- FOOTER -->
+      <!-- =========================
+         FOOTER
+    ========================== -->
+
       <footer class="footer">
+        <!-- FOOTER LOGO -->
+
         <div class="footer-logo">
-          <a href="#"> <img src="./images/logo1.png" alt="" /> </a>
+          <a href="#">
+            <img src="./images/logo1.png" alt="HerLuxe" />
+          </a>
         </div>
 
         <div class="footer-line"></div>
 
+        <!-- FOOTER CONTENT -->
+
         <div class="footer-content">
           <!-- COLUMN 1 -->
+
           <div class="footer-column">
-            <a href="#">ABOUT US</a>
-            <a href="#">FAQ</a>
-            <a href="#">CONTACT</a>
+            <a href="#"> ABOUT US </a>
+
+            <a href="faq.html"> FAQ </a>
+
+            <a href="#"> CONTACT </a>
           </div>
 
           <!-- COLUMN 2 -->
+
           <div class="footer-column">
             <h3>CUSTOMER SERVICE</h3>
 
-            <p>info@car.com</p>
-            <p>240-865-3730</p>
+            <p>support@herluxe.com</p>
+
+            <p>012-345-6789</p>
           </div>
 
           <!-- COLUMN 3 -->
+
           <div class="footer-column address">
             <p>
-              3926 Calvin Street,<br />
-              Baltimore, Maryland,<br />
-              21201,<br />
-              United State
+              123 Nguyen Trai Street,<br />
+
+              District 1, Ho Chi Minh City,<br />
+
+              Vietnam
             </p>
 
             <div class="footer-social">
@@ -166,13 +218,19 @@
           </div>
         </div>
 
-        <div class="copyright">2021 Autohunt. All Rights reserved</div>
+        <!-- COPYRIGHT -->
+
+        <div class="copyright">2026 HerLuxe. All Rights reserved</div>
       </footer>
     </div>
 
-    <!-- PASSWORD SCRIPT -->
+    <!-- =========================
+       PASSWORD SCRIPT
+  ========================== -->
+
     <script>
       const password = document.getElementById("password");
+
       const showPassword = document.getElementById("showPassword");
 
       showPassword.addEventListener("click", function () {

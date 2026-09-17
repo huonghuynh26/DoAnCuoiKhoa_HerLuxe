@@ -446,10 +446,6 @@ body {
 
 /* ADDRESS */
 
-.address {
-  /* align-items: flex-start; */
-}
-
 .address p {
   line-height: 1.45;
 }

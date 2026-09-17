@@ -22,7 +22,6 @@ body {
 .page {
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
@@ -73,6 +72,7 @@ body {
   color: #222;
 
   font-size: 13px;
+
   font-weight: 300;
 
   transition: 0.2s;
@@ -115,17 +115,45 @@ body {
 }
 
 /* ==============================
-   REGISTER SECTION
+   PAGE TITLE
 ================================ */
 
-.register-section {
-  min-height: 575px;
+.page-title {
+  height: 150px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 84px;
+  background: rgb(248, 225, 228);
+
+  text-align: center;
+}
+
+.page-title-content h1 {
+  font-size: 30px;
+
+  font-weight: 300;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 12px;
+}
+
+.page-title-content p {
+  font-size: 11px;
+
+  font-weight: 300;
+
+  color: #555;
+}
+
+/* ==============================
+   FAQ SECTION
+================================ */
+
+.faq-section {
+  min-height: 575px;
 
   padding: 70px 8%;
 
@@ -133,244 +161,273 @@ body {
 }
 
 /* ==============================
-   REGISTER FORM
+   FAQ HEADING
 ================================ */
 
-.register-form {
-  width: 440px;
+.faq-heading {
+  text-align: center;
+
+  margin-bottom: 55px;
 }
 
-.register-form h1 {
+.faq-heading h1 {
   font-size: 30px;
-  font-weight: 300;
 
-  margin-bottom: 42px;
+  font-weight: 300;
 
   letter-spacing: 1px;
+
+  margin-bottom: 14px;
 }
 
-/* FORM GROUP */
+.faq-heading p {
+  max-width: 600px;
 
-.form-group {
-  margin-bottom: 25px;
-}
+  margin: auto;
 
-.form-group label {
-  display: block;
+  font-size: 12px;
 
-  margin-bottom: 10px;
-
-  font-size: 13px;
-  font-weight: 400;
-
-  color: #222;
-}
-
-.form-group input {
-  width: 100%;
-  height: 48px;
-
-  border: 1px solid #dddddd;
-
-  background: #fff;
-
-  padding: 0 15px;
-
-  outline: none;
-
-  font-family: inherit;
-
-  font-size: 13px;
-  font-weight: 300;
-
-  color: #222;
-
-  transition: 0.2s;
-}
-
-.form-group input::placeholder {
-  color: #aaa;
-}
-
-.form-group input:focus {
-  border-color: rgb(248, 225, 228);
-}
-
-/* ==============================
-   PASSWORD
-================================ */
-
-.password-box {
-  position: relative;
-}
-
-.password-box input {
-  padding-right: 45px;
-}
-
-.password-box button {
-  position: absolute;
-
-  right: 14px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border: none;
-
-  background: transparent;
-
-  cursor: pointer;
+  line-height: 1.7;
 
   color: #777;
 
-  font-size: 14px;
+  font-weight: 300;
 }
 
 /* ==============================
-   REGISTER BUTTON
+   FAQ CONTAINER
 ================================ */
 
-.register-button {
-  width: 100%;
-  height: 49px;
+.faq-container {
+  display: flex;
 
-  border: none;
+  align-items: flex-start;
 
-  background: rgb(248, 225, 228);
+  justify-content: center;
 
-  color: #222;
+  gap: 70px;
 
-  font-family: inherit;
+  max-width: 1100px;
 
-  font-size: 13px;
+  margin: auto;
+}
+
+/* ==============================
+   LEFT CATEGORY
+================================ */
+
+.faq-menu {
+  width: 210px;
+
+  flex-shrink: 0;
+
+  border-top: 1px solid #222;
+
+  padding-top: 20px;
+}
+
+.menu-title {
+  font-size: 10px;
+
   font-weight: 400;
 
-  cursor: pointer;
+  letter-spacing: 1.5px;
 
-  margin-top: 8px;
-
-  transition: 0.25s;
-}
-
-.register-button:hover {
-  background: rgb(242, 207, 212);
-}
-
-/* ==============================
-   LOGIN
-================================ */
-
-.login-text {
-  text-align: center;
-
-  margin-top: 22px;
-
-  font-size: 12px;
+  margin-bottom: 20px;
 
   color: #555;
 }
 
-.login-text a {
+.faq-menu a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  height: 48px;
+
+  padding: 0 14px;
+
+  margin-bottom: 5px;
+
+  color: #444;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 300;
+
+  transition: 0.2s;
+}
+
+.faq-menu a i {
+  width: 16px;
+
+  font-size: 12px;
+}
+
+.faq-menu a:hover {
+  background: rgb(248, 225, 228);
+}
+
+.faq-menu a.active {
+  background: rgb(248, 225, 228);
+
   color: #222;
 
   font-weight: 400;
-
-  text-decoration: none;
-
-  border-bottom: 1px solid #222;
-
-  margin-left: 3px;
 }
 
 /* ==============================
-   RIGHT REGISTER CARD
+   FAQ LIST
 ================================ */
 
-.register-card {
-  width: 390px;
-  height: 390px;
-
-  background: rgb(248, 225, 228);
-
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  padding: 37px;
-}
-
-.card-border {
+.faq-list {
   width: 100%;
-  height: 100%;
 
-  border: 1px solid #222;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-}
-
-/* CARD LOGO */
-
-.logo-register-card {
-  width: 100%;
-}
-
-.logo-register-card img {
-  width: 100%;
-}
-
-.card-border h2 {
-  font-size: 27px;
-
-  font-weight: 300;
-
-  margin-bottom: 12px;
-}
-
-.card-border p {
-  font-size: 16px;
-
-  font-weight: 300;
-
-  margin-bottom: 48px;
+  max-width: 720px;
 }
 
 /* ==============================
-   SOCIAL
+   FAQ ITEM
 ================================ */
 
-.social-icons {
-  display: flex;
+.faq-item {
+  border-bottom: 1px solid #dedede;
 
-  gap: 25px;
+  background: #ffffff;
 }
 
-.social-icons a {
-  width: 32px;
-  height: 32px;
+.faq-item:first-child {
+  border-top: 1px solid #dedede;
+}
 
-  display: flex;
+/* ==============================
+   QUESTION
+================================ */
 
-  justify-content: center;
-  align-items: center;
+.faq-question {
+  width: 100%;
 
-  text-decoration: none;
+  min-height: 65px;
+
+  padding: 0 5px;
+
+  border: none;
+
+  background: #ffffff;
 
   color: #222;
 
-  font-size: 15px;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  text-align: left;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s;
 }
 
-.social-icons a:hover {
-  opacity: 0.5;
+.faq-question:hover {
+  color: #555;
+}
+
+.faq-question span {
+  font-size: 13px;
+
+  font-weight: 400;
+}
+
+.faq-question i {
+  font-size: 10px;
+
+  margin-left: 20px;
+
+  color: #555;
+
+  transition: 0.2s;
+}
+
+/* ==============================
+   ANSWER
+================================ */
+
+.faq-answer {
+  display: none;
+
+  padding: 0 35px 22px 5px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-answer p {
+  font-size: 11px;
+
+  line-height: 1.8;
+
+  color: #666;
+
+  font-weight: 300;
+}
+
+/* ==============================
+   ACTIVE QUESTION
+================================ */
+
+.faq-item.active .faq-question {
+  background: rgb(248, 225, 228);
+
+  padding-left: 15px;
+
+  padding-right: 15px;
+}
+
+/* ==============================
+   BACK TO TOP
+================================ */
+
+.back-to-top {
+  position: fixed;
+
+  right: 30px;
+
+  bottom: 30px;
+
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgb(248, 225, 228);
+
+  color: #222;
+
+  text-decoration: none;
+
+  border: 1px solid #e5cdd0;
+
+  font-size: 12px;
+
+  transition: 0.2s;
+}
+
+.back-to-top:hover {
+  background: rgb(242, 207, 212);
 }
 
 /* ==============================
@@ -379,13 +436,9 @@ body {
 
 .footer {
   background: #f2f2f2;
-
   min-height: 285px;
-
   padding: 0px 7% 0;
-
   color: #333;
-
   margin-top: auto;
 }
 
@@ -393,7 +446,6 @@ body {
 
 .footer-logo {
   display: flex;
-
   justify-content: center;
 }
 
@@ -403,9 +455,7 @@ body {
 
 .footer-line {
   height: 1px;
-
   background: #d6d6d6;
-
   width: 100%;
 }
 
@@ -413,21 +463,15 @@ body {
 
 .footer-content {
   display: grid;
-
   grid-template-columns: 1fr 1fr 1fr;
-
   padding: 33px 8% 28px;
-
   gap: 50px;
 }
 
 .footer-column {
   display: flex;
-
   align-items: center;
-
   flex-direction: column;
-
   gap: 17px;
 }
 
@@ -435,29 +479,21 @@ body {
 .footer-column h3,
 .footer-column p {
   font-size: 11px;
-
   font-weight: 300;
-
   line-height: 1.5;
 }
 
 .footer-column a {
   color: #333;
-
   text-decoration: none;
 }
 
 .footer-column h3 {
   font-weight: 400;
-
   margin-bottom: 2px;
 }
 
 /* ADDRESS */
-
-.address {
-  /* align-items: flex-start; */
-}
 
 .address p {
   line-height: 1.45;
@@ -467,15 +503,12 @@ body {
 
 .footer-social {
   display: flex;
-
   gap: 23px;
-
   margin-top: 1px;
 }
 
 .footer-social a {
   color: #333;
-
   font-size: 15px;
 }
 
@@ -483,14 +516,26 @@ body {
 
 .copyright {
   border-top: 1px solid #dedede;
-
   text-align: center;
-
   padding: 14px 0;
-
   font-size: 10px;
-
   font-weight: 300;
+}
+
+/* ==============================
+   RESPONSIVE FOOTER
+================================ */
+
+@media (max-width: 700px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    padding: 30px 5%;
+    gap: 30px;
+  }
+
+  .address {
+    align-items: flex-start;
+  }
 }
 
 /* ==============================
@@ -517,20 +562,16 @@ body {
     font-size: 11px;
   }
 
-  .register-section {
-    gap: 40px;
-
+  .faq-section {
     padding: 60px 5%;
   }
 
-  .register-form {
-    width: 400px;
+  .faq-container {
+    gap: 35px;
   }
 
-  .register-card {
-    width: 340px;
-
-    height: 340px;
+  .faq-menu {
+    width: 170px;
   }
 }
 
@@ -567,35 +608,45 @@ body {
     top: 22px;
   }
 
-  .register-section {
+  /* PAGE TITLE */
+
+  .page-title {
+    height: 130px;
+  }
+
+  /* FAQ */
+
+  .faq-section {
+    padding: 50px 25px;
+  }
+
+  .faq-heading {
+    margin-bottom: 40px;
+  }
+
+  .faq-heading h1 {
+    font-size: 26px;
+  }
+
+  .faq-container {
     flex-direction: column;
 
-    padding: 50px 25px;
-
-    gap: 50px;
+    gap: 35px;
   }
 
-  .register-form {
+  .faq-menu {
     width: 100%;
-
-    max-width: 440px;
   }
 
-  .register-card {
+  .faq-menu a {
+    display: inline-flex;
+
+    width: 49%;
+
+    margin-bottom: 5px;
+  }
+
+  .faq-list {
     width: 100%;
-
-    max-width: 390px;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-
-    padding: 30px 5%;
-
-    gap: 30px;
-  }
-
-  .address {
-    align-items: flex-start;
   }
 }
