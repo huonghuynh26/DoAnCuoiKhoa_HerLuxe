@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- HEADER -->
+      <header class="header">
+        <div class="logo">
+          <a href="#"> <img src="./images/logo3.png" alt="" /> </a>
+        </div>
+
+        <nav class="navbar">
+          <a href="#">New Cars</a>
+          <a href="#">Used Cars</a>
+          <a href="#">Compare</a>
+          <a href="#">Sell</a>
+
+          <a href="#" class="article">
+            Article
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+        </nav>
+
+        <div class="header-right">
+          <a href="#">
+            <i class="fa-solid fa-user"></i>
+            Sign In
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-globe"></i>
+            EN
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- LOGIN CONTENT -->
+      <main class="login-section">
+        <!-- LEFT -->
+        <div class="login-form">
+          <h1>Login</h1>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+
+            <input type="email" id="email" placeholder="name@mail.com" />
+          </div>
+
+          <div class="form-group password-group">
+            <label for="password">Password</label>
+
+            <div class="password-box">
+              <input type="password" id="password" placeholder="password" />
+
+              <button type="button" id="showPassword">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button class="login-button">Login</button>
+
+          <p class="register-text">
+            Don't have an account?
+            <a href="#">Login here</a>
+          </p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="login-card">
+          <div class="card-border">
+            <div class="logo-login-card">
+              <img src="./images/logo3.png" alt="" />
+            </div>
+            <h2>Login</h2>
+
+            <p>Welcome to HerLuxe</p>
+
+            <div class="social-icons">
+              <a href="#">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="footer-logo">
+          <a href="#"> <img src="./images/logo1.png" alt="" /> </a>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-content">
+          <!-- COLUMN 1 -->
+          <div class="footer-column">
+            <a href="#">ABOUT US</a>
+            <a href="#">FAQ</a>
+            <a href="#">CONTACT</a>
+          </div>
+
+          <!-- COLUMN 2 -->
+          <div class="footer-column">
+            <h3>CUSTOMER SERVICE</h3>
+
+            <p>info@car.com</p>
+            <p>240-865-3730</p>
+          </div>
+
+          <!-- COLUMN 3 -->
+          <div class="footer-column address">
+            <p>
+              3926 Calvin Street,<br />
+              Baltimore, Maryland,<br />
+              21201,<br />
+              United State
+            </p>
+
+            <div class="footer-social">
+              <a href="#">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">2021 Autohunt. All Rights reserved</div>
+      </footer>
+    </div>
+
+    <!-- PASSWORD SCRIPT -->
+    <script>
+      const password = document.getElementById("password");
+      const showPassword = document.getElementById("showPassword");
+
+      showPassword.addEventListener("click", function () {
+        if (password.type === "password") {
+          password.type = "text";
+
+          this.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+        } else {
+          password.type = "password";
+
+          this.innerHTML = '<i class="fa-solid fa-eye"></i>';
+        }
+      });
+    </script>
+  </body>
+</html>
