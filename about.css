@@ -1,0 +1,982 @@
+/* ==============================
+   RESET
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   BODY
+================================ */
+
+body {
+  font-family: "Montserrat", sans-serif;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-weight: 300;
+}
+
+/* ==============================
+   PAGE
+================================ */
+
+.page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* ==============================
+   HEADER
+================================ */
+
+.header {
+  height: 76px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 7%;
+
+  background: rgb(248, 225, 228);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* LOGO */
+
+.logo {
+  width: 190px;
+}
+
+.logo img {
+  width: 150px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 48px;
+
+  flex: 1;
+}
+
+.navbar a,
+.header-right a {
+  text-decoration: none;
+
+  color: #222;
+
+  font-size: 13px;
+
+  font-weight: 300;
+
+  transition: 0.2s;
+}
+
+.navbar a:hover,
+.header-right a:hover {
+  opacity: 0.55;
+}
+
+/* COLLECTION */
+
+.collection {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.collection i {
+  font-size: 9px;
+}
+
+/* HEADER RIGHT */
+
+.header-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+.header-right a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.header-right i {
+  font-size: 12px;
+}
+
+/* ==============================
+   ABOUT SECTION
+================================ */
+
+.about-section {
+  width: 100%;
+
+  background: #ffffff;
+}
+
+/* ==============================
+   INTRO
+================================ */
+
+.about-intro {
+  max-width: 650px;
+
+  margin: auto;
+
+  padding: 75px 30px 60px;
+
+  text-align: center;
+}
+
+.about-intro h1 {
+  font-size: 30px;
+
+  font-weight: 300;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 22px;
+}
+
+.about-intro p {
+  max-width: 580px;
+
+  margin: 0 auto 10px;
+
+  color: #777;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+/* ==============================
+   DISCOVER BUTTON
+================================ */
+
+.discover-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 22px;
+
+  width: 125px;
+
+  height: 38px;
+
+  background: #222;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  transition: 0.2s;
+}
+
+.discover-btn:hover {
+  background: #555;
+}
+
+/* ==============================
+   HERO IMAGE
+================================ */
+
+.about-image {
+  width: 100%;
+
+  height: 430px;
+
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ==============================
+   PHILOSOPHY
+================================ */
+
+.philosophy {
+  padding: 65px 8%;
+
+  text-align: center;
+
+  background: #ffffff;
+}
+
+.philosophy h2,
+.values h2,
+.testimonial h2,
+.collection-section h2 {
+  font-size: 21px;
+
+  font-weight: 300;
+
+  letter-spacing: 0.5px;
+
+  margin-bottom: 12px;
+}
+
+.philosophy-list {
+  max-width: 950px;
+
+  margin: 35px auto 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.philosophy-item {
+  min-height: 130px;
+
+  border: 1px solid #222;
+
+  padding: 25px 20px;
+
+  transition: 0.2s;
+}
+
+.philosophy-item:hover {
+  background: #f8e1e4;
+}
+
+.philosophy-icon {
+  margin-bottom: 12px;
+
+  font-size: 17px;
+}
+
+.philosophy-item h3 {
+  font-size: 12px;
+
+  font-weight: 400;
+
+  margin-bottom: 8px;
+}
+
+.philosophy-item p {
+  color: #777;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+/* ==============================
+   OUR STORY
+================================ */
+
+.our-story {
+  min-height: 430px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  background: #f8e1e4;
+}
+
+.story-content {
+  padding: 65px 12%;
+}
+
+.section-label {
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: #777;
+}
+
+.story-content h2 {
+  font-size: 27px;
+
+  font-weight: 300;
+
+  line-height: 1.4;
+
+  margin: 15px 0 20px;
+}
+
+.story-content h2 span {
+  font-weight: 400;
+}
+
+.story-content > p {
+  max-width: 450px;
+
+  font-size: 11px;
+
+  color: #666;
+
+  line-height: 1.8;
+
+  margin-bottom: 10px;
+}
+
+/* ==============================
+   STORY STATS
+================================ */
+
+.story-stats {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  max-width: 330px;
+
+  margin-top: 30px;
+
+  gap: 20px;
+}
+
+.stat {
+  border-bottom: 1px solid #d7b8bd;
+
+  padding-bottom: 9px;
+}
+
+.stat strong {
+  display: block;
+
+  font-size: 20px;
+
+  font-weight: 300;
+
+  margin-bottom: 5px;
+}
+
+.stat span {
+  font-size: 8px;
+
+  color: #555;
+}
+
+/* ==============================
+   STORY IMAGE
+================================ */
+
+.story-image {
+  height: 100%;
+}
+
+.story-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ==============================
+   VALUES
+================================ */
+
+.values {
+  padding: 65px 8%;
+
+  text-align: center;
+
+  background: #ffffff;
+}
+
+.values-description {
+  color: #777;
+
+  font-size: 11px;
+
+  margin-bottom: 35px;
+}
+
+.values-grid {
+  max-width: 900px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.value-card {
+  padding: 30px 20px;
+
+  background: #fafafa;
+
+  border: 1px solid #eeeeee;
+}
+
+.value-card i {
+  font-size: 19px;
+
+  margin-bottom: 15px;
+}
+
+.value-card h3 {
+  font-size: 12px;
+
+  font-weight: 400;
+
+  margin-bottom: 9px;
+}
+
+.value-card p {
+  font-size: 10px;
+
+  color: #777;
+
+  line-height: 1.7;
+}
+
+/* ==============================
+   TESTIMONIAL
+================================ */
+
+.testimonial {
+  padding: 60px 8% 70px;
+
+  background: #222;
+
+  color: white;
+
+  text-align: center;
+}
+
+.testimonial h2 {
+  color: white;
+
+  margin-bottom: 35px;
+}
+
+.testimonial-box {
+  max-width: 850px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 250px 1fr;
+
+  text-align: left;
+
+  background: #f8e1e4;
+
+  color: #222;
+}
+
+.testimonial-image {
+  height: 190px;
+}
+
+.testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.testimonial-content {
+  padding: 30px 40px;
+}
+
+.testimonial-content > i {
+  font-size: 18px;
+
+  margin-bottom: 15px;
+}
+
+.testimonial-content p {
+  font-size: 11px;
+
+  line-height: 1.8;
+
+  margin-bottom: 17px;
+
+  color: #555;
+}
+
+.testimonial-content h3 {
+  font-size: 11px;
+
+  font-weight: 400;
+
+  margin-bottom: 5px;
+}
+
+.testimonial-content span {
+  font-size: 9px;
+
+  color: #888;
+}
+
+.testimonial-slider {
+  max-width: 950px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.testimonial-box {
+  flex: 1;
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  text-align: left;
+  background: #f8e1e4;
+  color: #222;
+}
+
+.testimonial-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+
+.testimonial-btn:hover {
+  background: #f8e1e4;
+  color: #222;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #aaa;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+.testimonial-box {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  text-align: left;
+  background: #f8e1e4;
+  color: #222;
+
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.testimonial-box.slide-left {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+
+.testimonial-box.slide-right {
+  transform: translateX(60px);
+  opacity: 0;
+}
+
+/* ==============================
+   COLLECTION
+================================ */
+
+.collection-section {
+  padding: 60px 8%;
+
+  text-align: center;
+
+  background: #ffffff;
+}
+
+.collection-list {
+  max-width: 900px;
+
+  margin: 30px auto 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.collection-item {
+  height: 85px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  border: 1px solid #222;
+
+  font-size: 10px;
+
+  transition: 0.2s;
+}
+
+.collection-item i {
+  font-size: 15px;
+}
+
+.collection-item:hover {
+  background: #f8e1e4;
+}
+
+/* ==============================
+   BACK TO TOP
+================================ */
+
+.back-to-top {
+  position: fixed;
+
+  right: 30px;
+
+  bottom: 30px;
+
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgb(248, 225, 228);
+
+  color: #222;
+
+  text-decoration: none;
+
+  border: 1px solid #e5cdd0;
+
+  font-size: 12px;
+
+  transition: 0.2s;
+}
+
+.back-to-top:hover {
+  background: rgb(242, 207, 212);
+}
+
+/* ==============================
+   FOOTER
+================================ */
+
+.footer {
+  background: #f2f2f2;
+
+  min-height: 285px;
+
+  padding: 0 7%;
+
+  color: #333;
+
+  margin-top: auto;
+}
+
+.footer-logo {
+  display: flex;
+
+  justify-content: center;
+}
+
+.footer-logo img {
+  width: 120px;
+}
+
+.footer-line {
+  height: 1px;
+
+  background: #d6d6d6;
+
+  width: 100%;
+}
+
+.footer-content {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  padding: 33px 8% 28px;
+
+  gap: 50px;
+}
+
+.footer-column {
+  display: flex;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  gap: 17px;
+}
+
+.footer-column a,
+.footer-column h3,
+.footer-column p {
+  font-size: 11px;
+
+  font-weight: 300;
+
+  line-height: 1.5;
+}
+
+.footer-column a {
+  color: #333;
+
+  text-decoration: none;
+}
+
+.footer-column h3 {
+  font-weight: 400;
+
+  margin-bottom: 2px;
+}
+
+.address p {
+  line-height: 1.45;
+}
+
+.footer-social {
+  display: flex;
+
+  gap: 23px;
+
+  margin-top: 1px;
+}
+
+.footer-social a {
+  color: #333;
+
+  font-size: 15px;
+}
+
+.copyright {
+  border-top: 1px solid #dedede;
+
+  text-align: center;
+
+  padding: 14px 0;
+
+  font-size: 10px;
+
+  font-weight: 300;
+}
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 0 4%;
+  }
+
+  .logo {
+    width: auto;
+
+    margin-right: 30px;
+  }
+
+  .navbar {
+    gap: 20px;
+  }
+
+  .navbar a,
+  .header-right a {
+    font-size: 11px;
+  }
+
+  .our-story {
+    grid-template-columns: 1fr;
+  }
+
+  .story-image {
+    height: 350px;
+  }
+}
+
+/* ==============================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+  .header {
+    height: auto;
+
+    padding: 20px;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .navbar {
+    order: 3;
+
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .header-right {
+    position: absolute;
+
+    right: 20px;
+
+    top: 22px;
+  }
+
+  .about-intro {
+    padding: 55px 25px 45px;
+  }
+
+  .about-intro h1 {
+    font-size: 26px;
+  }
+
+  .about-image {
+    height: 280px;
+  }
+
+  .philosophy {
+    padding: 50px 25px;
+  }
+
+  .philosophy-list {
+    grid-template-columns: 1fr;
+  }
+
+  .story-content {
+    padding: 50px 25px;
+  }
+
+  .story-content h2 {
+    font-size: 24px;
+  }
+
+  .story-image {
+    height: 280px;
+  }
+
+  .values {
+    padding: 50px 25px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial {
+    padding: 50px 25px;
+  }
+
+  .testimonial-box {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-image {
+    height: 250px;
+  }
+
+  .testimonial-content {
+    padding: 25px;
+  }
+
+  .collection-section {
+    padding: 50px 25px;
+  }
+
+  .collection-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+
+    padding: 30px 5%;
+
+    gap: 30px;
+  }
+
+  .address {
+    align-items: flex-start;
+  }
+}
