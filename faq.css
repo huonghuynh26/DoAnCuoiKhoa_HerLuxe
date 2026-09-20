@@ -1,439 +1,286 @@
 /* ==============================
    RESET
 ================================ */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Montserrat", sans-serif;
   background: #ffffff;
   color: #222222;
   font-weight: 300;
 }
-
 /* ==============================
    PAGE
 ================================ */
-
 .page {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 /* ==============================
    HEADER
 ================================ */
-
 .header {
   height: 76px;
-
   display: flex;
   align-items: center;
-
   padding: 0 7%;
-
   background: rgb(248, 225, 228);
-
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 /* LOGO */
-
 .logo {
   width: 190px;
 }
-
 .logo img {
   width: 150px;
 }
-
 /* NAVBAR */
-
 .navbar {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 48px;
-
   flex: 1;
 }
-
 .navbar a,
 .header-right a {
   text-decoration: none;
-
   color: #222;
-
   font-size: 13px;
-
   font-weight: 300;
-
   transition: 0.2s;
 }
-
 .navbar a:hover,
 .header-right a:hover {
   opacity: 0.55;
 }
-
 .article {
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
-
 .article i {
   font-size: 9px;
 }
-
 /* HEADER RIGHT */
-
 .header-right {
   display: flex;
   align-items: center;
-
   gap: 28px;
 }
-
 .header-right a {
   display: flex;
   align-items: center;
-
   gap: 7px;
 }
-
 .header-right i {
   font-size: 12px;
 }
-
 /* ==============================
    PAGE TITLE
 ================================ */
-
 .page-title {
   height: 150px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: rgb(248, 225, 228);
-
   text-align: center;
 }
-
 .page-title-content h1 {
   font-size: 30px;
-
   font-weight: 300;
-
   letter-spacing: 1px;
-
   margin-bottom: 12px;
 }
-
 .page-title-content p {
   font-size: 11px;
-
   font-weight: 300;
-
   color: #555;
 }
-
 /* ==============================
    FAQ SECTION
 ================================ */
-
 .faq-section {
   min-height: 575px;
-
   padding: 70px 8%;
-
   background: #ffffff;
 }
-
 /* ==============================
    FAQ HEADING
 ================================ */
-
 .faq-heading {
   text-align: center;
-
   margin-bottom: 55px;
 }
-
 .faq-heading h1 {
   font-size: 30px;
-
   font-weight: 300;
-
   letter-spacing: 1px;
-
   margin-bottom: 14px;
 }
-
 .faq-heading p {
   max-width: 600px;
-
   margin: auto;
-
   font-size: 12px;
-
   line-height: 1.7;
-
   color: #777;
-
   font-weight: 300;
 }
-
 /* ==============================
    FAQ CONTAINER
 ================================ */
-
 .faq-container {
   display: flex;
-
   align-items: flex-start;
-
   justify-content: center;
-
   gap: 70px;
-
   max-width: 1100px;
-
   margin: auto;
 }
-
 /* ==============================
    LEFT CATEGORY
 ================================ */
-
 .faq-menu {
   width: 210px;
-
   flex-shrink: 0;
-
   border-top: 1px solid #222;
-
   padding-top: 20px;
 }
-
 .menu-title {
   font-size: 10px;
-
   font-weight: 400;
-
   letter-spacing: 1.5px;
-
   margin-bottom: 20px;
-
   color: #555;
 }
-
 .faq-menu a {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
-
   height: 48px;
-
   padding: 0 14px;
-
   margin-bottom: 5px;
-
   color: #444;
-
   text-decoration: none;
-
   font-size: 12px;
-
   font-weight: 300;
-
   transition: 0.2s;
 }
-
 .faq-menu a i {
   width: 16px;
-
   font-size: 12px;
 }
-
 .faq-menu a:hover {
   background: rgb(248, 225, 228);
 }
-
 .faq-menu a.active {
   background: rgb(248, 225, 228);
-
   color: #222;
-
   font-weight: 400;
 }
-
 /* ==============================
    FAQ LIST
 ================================ */
-
 .faq-list {
   width: 100%;
-
   max-width: 720px;
 }
-
 /* ==============================
    FAQ ITEM
 ================================ */
-
 .faq-item {
   border-bottom: 1px solid #dedede;
-
   background: #ffffff;
 }
-
 .faq-item:first-child {
   border-top: 1px solid #dedede;
 }
-
 /* ==============================
    QUESTION
 ================================ */
-
 .faq-question {
   width: 100%;
-
   min-height: 65px;
-
   padding: 0 5px;
-
   border: none;
-
   background: #ffffff;
-
   color: #222;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   text-align: left;
-
   font-family: inherit;
-
   cursor: pointer;
-
   transition: 0.2s;
 }
-
 .faq-question:hover {
   color: #555;
 }
-
 .faq-question span {
   font-size: 13px;
-
   font-weight: 400;
 }
-
 .faq-question i {
   font-size: 10px;
-
   margin-left: 20px;
-
   color: #555;
-
   transition: 0.2s;
 }
-
 /* ==============================
    ANSWER
 ================================ */
-
 .faq-answer {
   display: none;
-
   padding: 0 35px 22px 5px;
 }
-
 .faq-item.active .faq-answer {
   display: block;
 }
-
 .faq-answer p {
   font-size: 11px;
-
   line-height: 1.8;
-
   color: #666;
-
   font-weight: 300;
 }
-
 /* ==============================
    ACTIVE QUESTION
 ================================ */
-
 .faq-item.active .faq-question {
   background: rgb(248, 225, 228);
-
   padding-left: 15px;
-
   padding-right: 15px;
 }
-
 /* ==============================
    BACK TO TOP
 ================================ */
-
 .back-to-top {
   position: fixed;
-
   right: 30px;
-
   bottom: 30px;
-
   width: 45px;
-
   height: 45px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   background: rgb(248, 225, 228);
-
   color: #222;
-
   text-decoration: none;
-
   border: 1px solid #e5cdd0;
-
   font-size: 12px;
-
   transition: 0.2s;
 }
-
 .back-to-top:hover {
   background: rgb(242, 207, 212);
 }
-
 /* ==============================
    FOOTER
 ================================ */
-
 .footer {
   background: #f2f2f2;
   min-height: 285px;
@@ -441,40 +288,32 @@ body {
   color: #333;
   margin-top: auto;
 }
-
 /* FOOTER LOGO */
-
 .footer-logo {
   display: flex;
   justify-content: center;
 }
-
 .footer-logo img {
   width: 120px;
 }
-
 .footer-line {
   height: 1px;
   background: #d6d6d6;
   width: 100%;
 }
-
 /* FOOTER CONTENT */
-
 .footer-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 33px 8% 28px;
   gap: 50px;
 }
-
 .footer-column {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 17px;
 }
-
 .footer-column a,
 .footer-column h3,
 .footer-column p {
@@ -482,38 +321,29 @@ body {
   font-weight: 300;
   line-height: 1.5;
 }
-
 .footer-column a {
   color: #333;
   text-decoration: none;
 }
-
 .footer-column h3 {
   font-weight: 400;
   margin-bottom: 2px;
 }
-
 /* ADDRESS */
-
 .address p {
   line-height: 1.45;
 }
-
 /* FOOTER SOCIAL */
-
 .footer-social {
   display: flex;
   gap: 23px;
   margin-top: 1px;
 }
-
 .footer-social a {
   color: #333;
   font-size: 15px;
 }
-
 /* COPYRIGHT */
-
 .copyright {
   border-top: 1px solid #dedede;
   text-align: center;
@@ -521,131 +351,94 @@ body {
   font-size: 10px;
   font-weight: 300;
 }
-
 /* ==============================
    RESPONSIVE FOOTER
 ================================ */
-
 @media (max-width: 700px) {
   .footer-content {
     grid-template-columns: 1fr;
     padding: 30px 5%;
     gap: 30px;
   }
-
   .address {
     align-items: flex-start;
   }
 }
-
 /* ==============================
    RESPONSIVE
 ================================ */
-
 @media (max-width: 900px) {
   .header {
     padding: 0 4%;
   }
-
   .logo {
     width: auto;
-
     margin-right: 30px;
   }
-
   .navbar {
     gap: 20px;
   }
-
   .navbar a,
   .header-right a {
     font-size: 11px;
   }
-
   .faq-section {
     padding: 60px 5%;
   }
-
   .faq-container {
     gap: 35px;
   }
-
   .faq-menu {
     width: 170px;
   }
 }
-
 @media (max-width: 700px) {
   .header {
     height: auto;
-
     padding: 20px;
-
     flex-wrap: wrap;
-
     gap: 20px;
   }
-
   .logo {
     width: 100%;
   }
-
   .navbar {
     order: 3;
-
     width: 100%;
-
     justify-content: center;
-
     flex-wrap: wrap;
   }
-
   .header-right {
     position: absolute;
-
     right: 20px;
-
     top: 22px;
   }
-
   /* PAGE TITLE */
-
   .page-title {
     height: 130px;
   }
-
   /* FAQ */
-
   .faq-section {
     padding: 50px 25px;
   }
-
   .faq-heading {
     margin-bottom: 40px;
   }
-
   .faq-heading h1 {
     font-size: 26px;
   }
-
   .faq-container {
     flex-direction: column;
-
     gap: 35px;
   }
-
   .faq-menu {
     width: 100%;
   }
-
   .faq-menu a {
     display: inline-flex;
-
     width: 49%;
-
     margin-bottom: 5px;
   }
-
   .faq-list {
     width: 100%;
   }

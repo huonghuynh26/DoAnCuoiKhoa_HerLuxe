@@ -1,600 +1,399 @@
 /* ==============================
    RESET
 ================================ */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Montserrat", sans-serif;
   background: #ffffff;
   color: #222222;
   font-weight: 300;
 }
-
 /* ==============================
    PAGE
 ================================ */
-
 .page {
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
-
 /* ==============================
    HEADER
 ================================ */
-
 .header {
   height: 76px;
-
   display: flex;
   align-items: center;
-
   padding: 0 7%;
-
   background: rgb(248, 225, 228);
-
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 /* LOGO */
-
 .logo {
   width: 190px;
 }
-
 .logo img {
   width: 150px;
 }
-
 /* NAVBAR */
-
 .navbar {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 48px;
-
   flex: 1;
 }
-
 .navbar a,
 .header-right a {
   text-decoration: none;
-
   color: #222;
-
   font-size: 13px;
   font-weight: 300;
-
   transition: 0.2s;
 }
-
 .navbar a:hover,
 .header-right a:hover {
   opacity: 0.55;
 }
-
 .article {
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
-
 .article i {
   font-size: 9px;
 }
-
 /* HEADER RIGHT */
-
 .header-right {
   display: flex;
   align-items: center;
-
   gap: 28px;
 }
-
 .header-right a {
   display: flex;
   align-items: center;
-
   gap: 7px;
 }
-
 .header-right i {
   font-size: 12px;
 }
-
 /* ==============================
    REGISTER SECTION
 ================================ */
-
 .register-section {
   min-height: 575px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 84px;
-
   padding: 70px 8%;
-
   background: #ffffff;
 }
-
 /* ==============================
    REGISTER FORM
 ================================ */
-
 .register-form {
   width: 440px;
 }
-
 .register-form h1 {
   font-size: 30px;
   font-weight: 300;
-
   margin-bottom: 42px;
-
   letter-spacing: 1px;
 }
-
 /* FORM GROUP */
-
 .form-group {
   margin-bottom: 25px;
 }
-
 .form-group label {
   display: block;
-
   margin-bottom: 10px;
-
   font-size: 13px;
   font-weight: 400;
-
   color: #222;
 }
-
 .form-group input {
   width: 100%;
   height: 48px;
-
   border: 1px solid #dddddd;
-
   background: #fff;
-
   padding: 0 15px;
-
   outline: none;
-
   font-family: inherit;
-
   font-size: 13px;
   font-weight: 300;
-
   color: #222;
-
   transition: 0.2s;
 }
-
 .form-group input::placeholder {
   color: #aaa;
 }
-
 .form-group input:focus {
   border-color: rgb(248, 225, 228);
 }
-
 /* ==============================
    PASSWORD
 ================================ */
-
 .password-box {
   position: relative;
 }
-
 .password-box input {
   padding-right: 45px;
 }
-
 .password-box button {
   position: absolute;
-
   right: 14px;
   top: 50%;
-
   transform: translateY(-50%);
-
   border: none;
-
   background: transparent;
-
   cursor: pointer;
-
   color: #777;
-
   font-size: 14px;
 }
-
 /* ==============================
    REGISTER BUTTON
 ================================ */
-
 .register-button {
   width: 100%;
   height: 49px;
-
   border: none;
-
   background: rgb(248, 225, 228);
-
   color: #222;
-
   font-family: inherit;
-
   font-size: 13px;
   font-weight: 400;
-
   cursor: pointer;
-
   margin-top: 8px;
-
   transition: 0.25s;
 }
-
 .register-button:hover {
   background: rgb(242, 207, 212);
 }
-
 /* ==============================
    LOGIN
 ================================ */
-
 .login-text {
   text-align: center;
-
   margin-top: 22px;
-
   font-size: 12px;
-
   color: #555;
 }
-
 .login-text a {
   color: #222;
-
   font-weight: 400;
-
   text-decoration: none;
-
   border-bottom: 1px solid #222;
-
   margin-left: 3px;
 }
-
 /* ==============================
    RIGHT REGISTER CARD
 ================================ */
-
 .register-card {
   width: 390px;
   height: 390px;
-
   background: rgb(248, 225, 228);
-
   display: flex;
-
   justify-content: center;
   align-items: center;
-
   padding: 37px;
 }
-
 .card-border {
   width: 100%;
   height: 100%;
-
   border: 1px solid #222;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-
   text-align: center;
 }
-
 /* CARD LOGO */
-
 .logo-register-card {
   width: 100%;
 }
-
 .logo-register-card img {
   width: 100%;
 }
-
 .card-border h2 {
   font-size: 27px;
-
   font-weight: 300;
-
   margin-bottom: 12px;
 }
-
 .card-border p {
   font-size: 16px;
-
   font-weight: 300;
-
   margin-bottom: 48px;
 }
-
 /* ==============================
    SOCIAL
 ================================ */
-
 .social-icons {
   display: flex;
-
   gap: 25px;
 }
-
 .social-icons a {
   width: 32px;
   height: 32px;
-
   display: flex;
-
   justify-content: center;
   align-items: center;
-
   text-decoration: none;
-
   color: #222;
-
   font-size: 15px;
 }
-
 .social-icons a:hover {
   opacity: 0.5;
 }
-
 /* ==============================
    FOOTER
 ================================ */
-
 .footer {
   background: #f2f2f2;
-
   min-height: 285px;
-
   padding: 0px 7% 0;
-
   color: #333;
-
   margin-top: auto;
 }
-
 /* FOOTER LOGO */
-
 .footer-logo {
   display: flex;
-
   justify-content: center;
 }
-
 .footer-logo img {
   width: 120px;
 }
-
 .footer-line {
   height: 1px;
-
   background: #d6d6d6;
-
   width: 100%;
 }
-
 /* FOOTER CONTENT */
-
 .footer-content {
   display: grid;
-
   grid-template-columns: 1fr 1fr 1fr;
-
   padding: 33px 8% 28px;
-
   gap: 50px;
 }
-
 .footer-column {
   display: flex;
-
   align-items: center;
-
   flex-direction: column;
-
   gap: 17px;
 }
-
 .footer-column a,
 .footer-column h3,
 .footer-column p {
   font-size: 11px;
-
   font-weight: 300;
-
   line-height: 1.5;
 }
-
 .footer-column a {
   color: #333;
-
   text-decoration: none;
 }
-
 .footer-column h3 {
   font-weight: 400;
-
   margin-bottom: 2px;
 }
-
 /* ADDRESS */
-
 .address {
   /* align-items: flex-start; */
 }
-
 .address p {
   line-height: 1.45;
 }
-
 /* FOOTER SOCIAL */
-
 .footer-social {
   display: flex;
-
   gap: 23px;
-
   margin-top: 1px;
 }
-
 .footer-social a {
   color: #333;
-
   font-size: 15px;
 }
-
 /* COPYRIGHT */
-
 .copyright {
   border-top: 1px solid #dedede;
-
   text-align: center;
-
   padding: 14px 0;
-
   font-size: 10px;
-
   font-weight: 300;
 }
-
 /* ==============================
    RESPONSIVE
 ================================ */
-
 @media (max-width: 900px) {
   .header {
     padding: 0 4%;
   }
-
   .logo {
     width: auto;
-
     margin-right: 30px;
   }
-
   .navbar {
     gap: 20px;
   }
-
   .navbar a,
   .header-right a {
     font-size: 11px;
   }
-
   .register-section {
     gap: 40px;
-
     padding: 60px 5%;
   }
-
   .register-form {
     width: 400px;
   }
-
   .register-card {
     width: 340px;
-
     height: 340px;
   }
 }
-
 @media (max-width: 700px) {
   .header {
     height: auto;
-
     padding: 20px;
-
     flex-wrap: wrap;
-
     gap: 20px;
   }
-
   .logo {
     width: 100%;
   }
-
   .navbar {
     order: 3;
-
     width: 100%;
-
     justify-content: center;
-
     flex-wrap: wrap;
   }
-
   .header-right {
     position: absolute;
-
     right: 20px;
-
     top: 22px;
   }
-
   .register-section {
     flex-direction: column;
-
     padding: 50px 25px;
-
     gap: 50px;
   }
-
   .register-form {
     width: 100%;
-
     max-width: 440px;
   }
-
   .register-card {
     width: 100%;
-
     max-width: 390px;
   }
-
   .footer-content {
     grid-template-columns: 1fr;
-
     padding: 30px 5%;
-
     gap: 30px;
   }
-
   .address {
     align-items: flex-start;
   }
