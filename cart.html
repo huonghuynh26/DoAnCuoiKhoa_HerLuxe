@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | HerLuxe</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- ================= HEADER ================= -->
+      <div data-site-header></div>
+
+      <!-- ================= BREADCRUMB ================= -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="home.html">Home</a>
+        <span>/</span>
+        <span>Cart</span>
+      </nav>
+
+      <!-- ================= CART (filled by JS) ================= -->
+      <main class="cart-section">
+        <h1>Your bag</h1>
+        <div id="cart-root">
+          <!-- Nội dung sẽ được render bằng JavaScript bên dưới -->
+        </div>
+      </main>
+
+      <!-- ================= FOOTER ================= -->
+      <footer class="footer">
+        <div class="footer-logo">
+          <a href="home.html">
+            <img src="./images/logo1.png" alt="HerLuxe Logo" />
+          </a>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footer-content">
+          <div class="footer-column">
+            <a href="about.html"> ABOUT US </a>
+            <a href="faq.html"> FAQ </a>
+            <a href="contact.html"> CONTACT </a>
+          </div>
+          <div class="footer-column">
+            <h3>CUSTOMER SERVICE</h3>
+            <p>support@herluxe.com</p>
+            <p>012-345-6789</p>
+          </div>
+          <div class="footer-column address">
+            <p>
+              123 Nguyen Trai Street,<br />
+              District 1, Ho Chi Minh City,<br />
+              Vietnam
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">2026 HerLuxe. All Rights reserved</div>
+      </footer>
+    </div>
+
+    <!-- ================= DATA + CART LOGIC ================= -->
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+
+    <!-- ================= RENDER LOGIC ================= -->
+    <script>
+      const cartRoot = document.getElementById("cart-root");
+
+      function renderEmptyCart() {
+        cartRoot.innerHTML = `
+          <div class="cart-empty">
+            <h2>Giỏ hàng của bạn đang trống</h2>
+            <p>Hãy chọn vài sản phẩm yêu thích và quay lại đây nhé.</p>
+            <a href="home.html#makeup">Tiếp tục mua sắm</a>
+          </div>
+        `;
+      }
+
+      function renderCart() {
+        const cart = getCart();
+
+        if (cart.length === 0) {
+          renderEmptyCart();
+          return;
+        }
+
+        const rows = cart
+          .map((item) => {
+            const product = getProductById(item.id);
+            if (!product) return ""; // sản phẩm không còn tồn tại thì bỏ qua
+            const lineTotal = product.price * item.qty;
+            return `
+              <div class="cart-item" data-id="${product.id}">
+                <div class="cart-item-image">
+                  <img src="${product.image}" alt="${product.name}" />
+                </div>
+                <div class="cart-item-info">
+                  <p>${product.category}</p>
+                  <h3>${product.name}</h3>
+                  <a href="product.html?id=${product.id}">Xem chi tiết</a>
+                </div>
+                <div class="cart-item-qty">
+                  <button type="button" class="qty-minus" aria-label="Giảm số lượng">−</button>
+                  <input type="text" class="qty-input" value="${item.qty}" inputmode="numeric" />
+                  <button type="button" class="qty-plus" aria-label="Tăng số lượng">+</button>
+                </div>
+                <div class="cart-item-total">
+                  <strong>${formatPrice(lineTotal)}</strong>
+                  <button type="button" class="cart-item-remove">Xóa</button>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+
+        const subtotal = getCartTotal();
+
+        cartRoot.innerHTML = `
+          <div class="cart-container">
+            <div class="cart-items">${rows}</div>
+            <aside class="cart-summary">
+              <h2>Tóm tắt đơn hàng</h2>
+              <div class="cart-summary-row">
+                <span>Tạm tính</span>
+                <span>${formatPrice(subtotal)}</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Phí vận chuyển</span>
+                <span>Tính ở bước thanh toán</span>
+              </div>
+              <div class="cart-summary-row total">
+                <span>Tổng cộng</span>
+                <span>${formatPrice(subtotal)}</span>
+              </div>
+              <button type="button" class="checkout-btn">Tiến hành thanh toán</button>
+              <a href="home.html#makeup" class="continue-shopping">← Tiếp tục mua sắm</a>
+            </aside>
+          </div>
+        `;
+
+        attachCartEvents();
+      }
+
+      function attachCartEvents() {
+        cartRoot.querySelectorAll(".cart-item").forEach((row) => {
+          const id = row.dataset.id;
+          const input = row.querySelector(".qty-input");
+
+          row.querySelector(".qty-minus").addEventListener("click", () => {
+            const current = Math.max(1, parseInt(input.value, 10) || 1);
+            updateCartItemQty(id, current - 1); // current - 1 = 0 sẽ tự xóa sản phẩm
+            renderCart();
+          });
+
+          row.querySelector(".qty-plus").addEventListener("click", () => {
+            const current = Math.max(1, parseInt(input.value, 10) || 1);
+            updateCartItemQty(id, current + 1);
+            renderCart();
+          });
+
+          input.addEventListener("change", () => {
+            const newQty = Math.max(0, parseInt(input.value, 10) || 0);
+            updateCartItemQty(id, newQty);
+            renderCart();
+          });
+
+          row
+            .querySelector(".cart-item-remove")
+            .addEventListener("click", () => {
+              removeFromCart(id);
+              renderCart();
+            });
+        });
+
+        const checkoutBtn = cartRoot.querySelector(".checkout-btn");
+        if (checkoutBtn) {
+          checkoutBtn.addEventListener("click", () => {
+            // Trang checkout.html sẽ được làm ở bước sau.
+            alert("Trang thanh toán sẽ được kết nối ở bước tiếp theo.");
+          });
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+    <script src="header.js"></script>
+  </body>
+</html>

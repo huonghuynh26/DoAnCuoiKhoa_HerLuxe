@@ -43,7 +43,7 @@
 
         <!-- ABOUT IMAGE -->
         <div class="about-image">
-          <img src="./images/product1.png" alt="HerLuxe Beauty" />
+          <img src="./images/display.png" alt="HerLuxe Beauty" />
         </div>
 
         <!-- PHILOSOPHY -->
@@ -310,10 +310,14 @@
 
       function showTestimonial(index) {
         currentIndex = index;
-        document.getElementById("testimonial-img").src = testimonials[index].image;
-        document.getElementById("testimonial-text").textContent = testimonials[index].text;
-        document.getElementById("testimonial-name").textContent = testimonials[index].name;
-        document.getElementById("testimonial-role").textContent = testimonials[index].role;
+        document.getElementById("testimonial-img").src =
+          testimonials[index].image;
+        document.getElementById("testimonial-text").textContent =
+          testimonials[index].text;
+        document.getElementById("testimonial-name").textContent =
+          testimonials[index].name;
+        document.getElementById("testimonial-role").textContent =
+          testimonials[index].role;
         dots.forEach((dot, i) => {
           dot.classList.toggle("active", i === index);
         });
@@ -352,7 +356,8 @@
       }
 
       function prevTestimonial() {
-        const newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        const newIndex =
+          (currentIndex - 1 + testimonials.length) % testimonials.length;
         changeTestimonial(newIndex, "prev");
       }
 
