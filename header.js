@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 1. Tải header.html tự động
   try {
     const response = await fetch("header.html");
-    if (!response.ok) throw new Error(`Header request failed: ${response.status}`);
+    if (!response.ok)
+      throw new Error(`Header request failed: ${response.status}`);
     mount.innerHTML = await response.text();
   } catch (error) {
     mount.innerHTML =
@@ -57,12 +58,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // Nhận diện đường dẫn trang hiện tại
-  const currentFileName = window.location.pathname.split("/").pop() || "home.html";
+  const currentFileName =
+    window.location.pathname.split("/").pop() || "home.html";
   const currentHash = window.location.hash.replace("#", "");
 
   if (currentFileName === "about.html") {
     setActiveNav("about");
-  } else if (currentFileName === "home.html" || currentFileName === "index.html" || currentFileName === "") {
+  } else if (
+    currentFileName === "home.html" ||
+    currentFileName === "index.html" ||
+    currentFileName === ""
+  ) {
     if (currentHash) {
       setActiveNav(currentHash);
     } else {
@@ -72,7 +78,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 4. Intersection Observer cho Landing Page
   const sections = document.querySelectorAll("section[id]");
-  if (sections.length > 0 && (currentFileName === "home.html" || currentFileName === "index.html" || currentFileName === "")) {
+  if (
+    sections.length > 0 &&
+    (currentFileName === "home.html" ||
+      currentFileName === "index.html" ||
+      currentFileName === "")
+  ) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,20 +92,14 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         });
       },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
     );
 
     sections.forEach((section) => observer.observe(section));
   }
 
-  // 5. Đồng bộ giỏ hàng
-  const cartCount = mount.querySelector(".hl-cart-count");
-  const storedCount = Number.parseInt(
-    localStorage.getItem("herluxe-cart-count") || "0",
-    10
-  );
-  if (cartCount)
-    cartCount.textContent = String(Number.isNaN(storedCount) ? 0 : storedCount);
+  // 5. Đồng bộ giỏ hàng — số lượng thật được cart.js cập nhật (key "herluxe-cart"),
+  // header.js chỉ có nhiệm vụ tải và gắn header, không tự tính số giỏ hàng nữa.
 
   // 6. Logic Chanel-Style: Trượt NGUYÊN KHỐI HEADER khi Cuộn
   let lastScrollY = window.scrollY;
@@ -124,7 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       lastScrollY = currentScrollY;
     },
-    { passive: true }
+    { passive: true },
   );
 
   // 7. Logic Toggle Inline Search
@@ -172,16 +177,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-
   /* Hiện nút X khi có chữ */
 
   searchInput?.addEventListener("input", () => {
     if (!searchClear) return;
 
-    searchClear.style.display =
-      searchInput.value.length > 0 ? "flex" : "none";
+    searchClear.style.display = searchInput.value.length > 0 ? "flex" : "none";
   });
-
 
   /* Xóa chữ */
 
@@ -199,7 +201,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-
   /* Click ra ngoài */
 
   document.addEventListener("click", (e) => {
@@ -212,17 +213,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-
   /* ESC */
 
   document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      inlineSearch?.classList.contains("is-open")
-    ) {
+    if (e.key === "Escape" && inlineSearch?.classList.contains("is-open")) {
       closeSearch();
     }
   });
-
-
 });

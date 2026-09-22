@@ -2,7 +2,7 @@
    HERLUXE — PRODUCT DATA
    Dữ liệu sản phẩm dùng chung cho:
    - home.html (hiển thị lưới sản phẩm)
-   - product.html (trang chi tiết)
+   - products.html (trang chi tiết)
    - cart.html (tra cứu tên/giá/ảnh theo id trong giỏ)
 
    Khi thêm sản phẩm mới: chỉ cần thêm 1 object vào mảng bên dưới.

@@ -120,10 +120,14 @@
             ></a>
           </div>
           <div class="product-grid">
-            <article class="product-card product-card-rose">
+            <article
+              class="product-card product-card-rose"
+              style="cursor: pointer"
+              onclick="goToProduct(event, 'petal-tint-balm')"
+            >
               <span class="product-tag">New</span>
               <div class="product-visual product-visual-lip">
-                <span>HER<br />LUXE</span>
+                <img src="images/LipBalm.png" alt="Petal tint balm" />
               </div>
               <div class="product-info">
                 <div>
@@ -132,15 +136,26 @@
                 </div>
                 <strong>$18</strong>
               </div>
-              <button type="button" onclick="addToBag('Petal tint balm')">
+              <button
+                type="button"
+                onclick="
+                  event.stopPropagation();
+                  addToCart('petal-tint-balm', 1);
+                  showToast('Đã thêm Petal tint balm vào giỏ hàng');
+                "
+              >
                 Add to bag <i class="fa-solid fa-plus"></i>
               </button>
             </article>
 
-            <article class="product-card product-card-sand">
+            <article
+              class="product-card product-card-sand"
+              style="cursor: pointer"
+              onclick="goToProduct(event, 'cloud-cream')"
+            >
               <span class="product-tag">Bestseller</span>
               <div class="product-visual product-visual-cream">
-                <span>H</span>
+                <img src="images/Cream.png" alt="Cloud cream" />
               </div>
               <div class="product-info">
                 <div>
@@ -149,15 +164,26 @@
                 </div>
                 <strong>$28</strong>
               </div>
-              <button type="button" onclick="addToBag('Cloud cream')">
+              <button
+                type="button"
+                onclick="
+                  event.stopPropagation();
+                  addToCart('cloud-cream', 1);
+                  showToast('Đã thêm Cloud cream vào giỏ hàng');
+                "
+              >
                 Add to bag <i class="fa-solid fa-plus"></i>
               </button>
             </article>
 
-            <article class="product-card product-card-plum">
+            <article
+              class="product-card product-card-plum"
+              style="cursor: pointer"
+              onclick="goToProduct(event, 'soft-glow-set')"
+            >
               <span class="product-tag">Limited</span>
               <div class="product-visual product-visual-glow">
-                <span>GLOW<br />SET</span>
+                <img src="images/Contour.png" alt="Soft glow set" />
               </div>
               <div class="product-info">
                 <div>
@@ -166,15 +192,26 @@
                 </div>
                 <strong>$34</strong>
               </div>
-              <button type="button" onclick="addToBag('Soft glow set')">
+              <button
+                type="button"
+                onclick="
+                  event.stopPropagation();
+                  addToCart('soft-glow-set', 1);
+                  showToast('Đã thêm Soft glow set vào giỏ hàng');
+                "
+              >
                 Add to bag <i class="fa-solid fa-plus"></i>
               </button>
             </article>
 
-            <article class="product-card product-card-ivory">
+            <article
+              class="product-card product-card-ivory"
+              style="cursor: pointer"
+              onclick="goToProduct(event, 'silk-body-oil')"
+            >
               <span class="product-tag">Everyday</span>
               <div class="product-visual product-visual-oil">
-                <span>H</span>
+                <img src="images/Oil.png" alt="Silk body oil" />
               </div>
               <div class="product-info">
                 <div>
@@ -183,7 +220,14 @@
                 </div>
                 <strong>$22</strong>
               </div>
-              <button type="button" onclick="addToBag('Silk body oil')">
+              <button
+                type="button"
+                onclick="
+                  event.stopPropagation();
+                  addToCart('silk-body-oil', 1);
+                  showToast('Đã thêm Silk body oil vào giỏ hàng');
+                "
+              >
                 Add to bag <i class="fa-solid fa-plus"></i>
               </button>
             </article>
@@ -236,9 +280,13 @@
               ></a>
             </div>
             <div class="mini-product-list">
-              <article class="mini-product">
+              <article
+                class="mini-product"
+                style="cursor: pointer"
+                onclick="goToProduct(event, 'daily-glow-duo')"
+              >
                 <div class="mini-product-art art-one">
-                  <i class="fa-solid fa-sun"></i>
+                  <img src="images/Palette.png" alt="Daily glow duo" />
                 </div>
                 <div>
                   <p>Makeup</p>
@@ -247,15 +295,23 @@
                 </div>
                 <button
                   type="button"
-                  onclick="addToBag('Daily glow duo')"
+                  onclick="
+                    event.stopPropagation();
+                    addToCart('daily-glow-duo', 1);
+                    showToast('Đã thêm Daily glow duo vào giỏ hàng');
+                  "
                   aria-label="Add Daily glow duo to bag"
                 >
                   <i class="fa-solid fa-plus"></i>
                 </button>
               </article>
-              <article class="mini-product">
+              <article
+                class="mini-product"
+                style="cursor: pointer"
+                onclick="goToProduct(event, 'dew-drop-serum')"
+              >
                 <div class="mini-product-art art-two">
-                  <i class="fa-solid fa-droplet"></i>
+                  <img src="images/Serum.png" alt="Dew drop serum" />
                 </div>
                 <div>
                   <p>Skincare</p>
@@ -264,15 +320,23 @@
                 </div>
                 <button
                   type="button"
-                  onclick="addToBag('Dew drop serum')"
+                  onclick="
+                    event.stopPropagation();
+                    addToCart('dew-drop-serum', 1);
+                    showToast('Đã thêm Dew drop serum vào giỏ hàng');
+                  "
                   aria-label="Add Dew drop serum to bag"
                 >
                   <i class="fa-solid fa-plus"></i>
                 </button>
               </article>
-              <article class="mini-product">
+              <article
+                class="mini-product"
+                style="cursor: pointer"
+                onclick="goToProduct(event, 'afterglow-mist')"
+              >
                 <div class="mini-product-art art-three">
-                  <i class="fa-solid fa-star"></i>
+                  <img src="images/FacialSpray.png" alt="Afterglow mist" />
                 </div>
                 <div>
                   <p>Body care</p>
@@ -281,7 +345,11 @@
                 </div>
                 <button
                   type="button"
-                  onclick="addToBag('Afterglow mist')"
+                  onclick="
+                    event.stopPropagation();
+                    addToCart('afterglow-mist', 1);
+                    showToast('Đã thêm Afterglow mist vào giỏ hàng');
+                  "
                   aria-label="Add Afterglow mist to bag"
                 >
                   <i class="fa-solid fa-plus"></i>
@@ -339,6 +407,30 @@
 
       <!-- TOAST NOTIFICATION -->
       <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+      <!-- ================= PRODUCT + CART LOGIC ================= -->
+      <script src="products.js"></script>
+      <script src="cart.js"></script>
+      <script>
+        // Bấm vào card sản phẩm (trừ khi bấm đúng nút "Add to bag") sẽ mở trang chi tiết
+        function goToProduct(event, productId) {
+          if (event.target.closest("button")) return;
+          window.location.href = "products.html?id=" + productId;
+        }
+
+        // Hiện thông báo nhỏ ở góc màn hình khi thêm vào giỏ thành công
+        let toastTimeout;
+        function showToast(message) {
+          const toastEl = document.querySelector("[data-toast]");
+          if (!toastEl) return;
+          toastEl.textContent = message;
+          toastEl.classList.add("is-visible");
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toastEl.classList.remove("is-visible");
+          }, 2200);
+        }
+      </script>
 
       <!-- ================= FOOTER ================= -->
       <footer class="footer">

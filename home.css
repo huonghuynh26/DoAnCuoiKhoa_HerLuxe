@@ -421,92 +421,18 @@ button {
   overflow: hidden;
 }
 
-.product-visual::before {
-  content: "";
-  position: absolute;
-  width: 90px;
-  height: 145px;
-  border-radius: 45px 45px 20px 20px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.28),
-    transparent 30%,
-    rgba(80, 30, 30, 0.12)
-  );
-  box-shadow:
-    inset -12px 0 14px rgba(97, 50, 50, 0.09),
-    0 15px 17px rgba(65, 38, 35, 0.12);
-}
-
-.product-visual::after {
-  content: "";
-  position: absolute;
-  width: 47px;
-  height: 25px;
-  top: 40px;
-  border-radius: 5px 5px 2px 2px;
-  background: rgba(68, 45, 45, 0.85);
-}
-
-.product-visual span {
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
   position: relative;
   z-index: 1;
-  margin-top: 26px;
-  color: rgba(255, 253, 250, 0.82);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-align: center;
+  transition: transform 300ms ease;
 }
 
-/* Chi tiết visual sản phẩm */
-.product-visual-lip::before {
-  width: 55px;
-  height: 145px;
-  border-radius: 28px 28px 8px 8px;
-  background: linear-gradient(90deg, #874f55, #bd7b78 55%, #693c48);
-}
-.product-visual-lip::after {
-  top: 31px;
-  width: 32px;
-  height: 43px;
-  border-radius: 16px 16px 5px 5px;
-  background: #54303b;
-}
-.product-visual-cream::before {
-  width: 145px;
-  height: 94px;
-  top: 78px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fff8ed, #d1a58c);
-}
-.product-visual-cream::after {
-  top: 64px;
-  width: 130px;
-  height: 24px;
-  border-radius: 50%;
-  background: #d2a88f;
-}
-.product-visual-cream span,
-.product-visual-oil span {
-  margin: 0;
-  color: #8d6656;
-}
-.product-visual-glow::before {
-  width: 70px;
-  height: 150px;
-  background: linear-gradient(90deg, #7a4f5c, #bd8c94 55%, #694452);
-}
-.product-visual-glow::after {
-  top: 31px;
-  background: #5b3b47;
-}
-.product-visual-oil::before {
-  width: 91px;
-  height: 145px;
-  background: linear-gradient(90deg, #c4a879, #f1d9a5 55%, #a48151);
-}
-.product-visual-oil::after {
-  background: #7e663f;
+.product-card:hover .product-visual img {
+  transform: scale(1.05);
 }
 
 .product-info {
@@ -737,12 +663,21 @@ button {
   min-height: 105px;
   display: grid;
   place-items: center;
-  color: #fff;
+  overflow: hidden;
 }
 
-.mini-product-art i {
-  font-size: 21px;
+.mini-product-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 300ms ease;
 }
+
+.mini-product:hover .mini-product-art img {
+  transform: scale(1.05);
+}
+
 .art-one {
   background: #a9686c;
 }
@@ -1132,4 +1067,31 @@ button {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+/* ==============================
+   TOAST NOTIFICATION (Add to bag)
+================================ */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translate(-50%, 20px);
+  background: #222;
+  color: #fff;
+  padding: 12px 22px;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+  z-index: 10000;
+}
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
