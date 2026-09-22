@@ -1,62 +1,81 @@
 <div class="hl-header-wrapper">
   <div class="hl-announcement-bar">
-    <p>Free shipping on orders over $50 <span aria-hidden="true">·</span> Beauty, made personal</p>
+    <p>
+      Free shipping on orders over $50 <span aria-hidden="true">·</span> Beauty,
+      made personal
+    </p>
   </div>
   <header class="hl-site-header">
     <div class="hl-header-shell">
       <a class="hl-brand" href="home.html" aria-label="HerLuxe home">
-        <span class="hl-brand-mark">H</span>
-        <span class="hl-brand-copy"><strong>HerLuxe</strong><small>Beauty essentials</small></span>
+        <img src="./images/logo4.png" alt="HerLuxe Logo" />
       </a>
-      <button class="hl-menu-toggle" type="button" aria-expanded="false" aria-controls="hl-primary-nav">
+      <button
+        class="hl-menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="hl-primary-nav"
+      >
         <span></span><span></span><span></span>
         <span class="sr-only">Open menu</span>
       </button>
-      <nav class="hl-primary-nav" id="hl-primary-nav" aria-label="Primary navigation">
-        <a href="home.html#new-arrivals" data-nav="new-arrivals">New arrivals</a>
+      <nav
+        class="hl-primary-nav"
+        id="hl-primary-nav"
+        aria-label="Primary navigation"
+      >
+        <a href="home.html#new-arrivals" data-nav="new-arrivals"
+          >New arrivals</a
+        >
         <a href="home.html#makeup" data-nav="makeup">Makeup</a>
         <a href="home.html#skincare" data-nav="skincare">Skincare</a>
-        <a href="home.html#best-sellers" data-nav="best-sellers">Best sellers</a>
+        <a href="home.html#best-sellers" data-nav="best-sellers"
+          >Best sellers</a
+        >
         <a href="about.html" data-nav="about">About us</a>
       </nav>
       <div class="hl-header-actions">
         <!-- Khung Search Inline Tinh Chỉnh -->
-      <div class="hl-inline-search" id="hl-inline-search">
+        <div class="hl-inline-search" id="hl-inline-search">
+          <div class="hl-search-expandable">
+            <input
+              type="text"
+              id="hl-search-input"
+              placeholder="Search beauty..."
+              autocomplete="off"
+            />
 
-        <div class="hl-search-expandable">
-
-          <input
-            type="text"
-            id="hl-search-input"
-            placeholder="Search beauty..."
-            autocomplete="off"
-          />
+            <button
+              type="button"
+              class="hl-search-clear"
+              id="hl-search-clear"
+              aria-label="Clear search"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
 
           <button
+            class="hl-icon-btn"
+            id="hl-search-trigger"
             type="button"
-            class="hl-search-clear"
-            id="hl-search-clear"
-            aria-label="Clear search"
+            aria-label="Open search"
           >
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <i class="fa-solid fa-xmark close-icon"></i>
           </button>
-
         </div>
 
-        <button
-          class="hl-icon-btn"
-          id="hl-search-trigger"
-          type="button"
-          aria-label="Open search"
+        <a class="hl-icon-link" href="login.html" aria-label="Account"
+          ><i class="fa-regular fa-user"></i
+        ></a>
+        <a
+          class="hl-icon-link cart-link"
+          href="home.html#bag"
+          aria-label="Shopping bag"
+          ><i class="fa-solid fa-bag-shopping"></i
+          ><span class="hl-cart-count">0</span></a
         >
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <i class="fa-solid fa-xmark close-icon"></i>
-        </button>
-
-      </div>
-
-        <a class="hl-icon-link" href="login.html" aria-label="Account"><i class="fa-regular fa-user"></i></a>
-        <a class="hl-icon-link cart-link" href="home.html#bag" aria-label="Shopping bag"><i class="fa-solid fa-bag-shopping"></i><span class="hl-cart-count">0</span></a>
         <a class="hl-signin-link" href="login.html">Sign in</a>
       </div>
     </div>
