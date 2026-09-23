@@ -1,0 +1,4 @@
+[
+  {"id":"user-001","name":"Won Nguyen","email":"won@example.com","password":"customer123","phone":"012-345-6789","role":"customer"},
+  {"id":"admin-001","name":"HerLuxe Admin","email":"admin@herluxe.local","password":"admin123","phone":"012-000-0000","role":"admin"}
+]

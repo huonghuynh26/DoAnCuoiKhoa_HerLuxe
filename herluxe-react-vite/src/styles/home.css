@@ -33,6 +33,9 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Đẩy toàn bộ phần nội dung bên dưới xuống, không bị header che khuất */
+
+
 /* Typography chuẩn thiết kế Luxe */
 .home-page h1,
 .home-page h2,
@@ -572,11 +575,49 @@ button {
   padding-bottom: 125px;
 }
 
+/* Sửa layout phần Best Sellers */
 .best-seller-layout {
   display: grid;
-  grid-template-columns: 0.75fr 1.25fr;
-  gap: 45px;
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .best-seller-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mini-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.mini-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.mini-product-art {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mini-product-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .editorial-tile {

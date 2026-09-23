@@ -1,0 +1,6 @@
+{
+  "products": { "root": "items", "file": "products.json", "fields": ["id", "name", "category", "tag", "price", "image", "shortDescription", "description", "stock"] },
+  "collections": { "root": "items", "file": "collections.json", "fields": ["id", "title", "subtitle", "category", "image"] },
+  "users": { "root": "items", "file": "users.json", "fields": ["id", "name", "email", "role"] },
+  "orders": { "root": "items", "file": "orders.json", "fields": ["id", "customer", "email", "items", "total", "status", "createdAt"] }
+}

@@ -1,0 +1,5 @@
+[
+  {"id":"HL-1001","customer":"Won Nguyen","email":"won@example.com","items":[{"productId":"cloud-cream","qty":1}],"total":28,"status":"completed","createdAt":"2026-09-18"},
+  {"id":"HL-1002","customer":"Chae Huynh","email":"chae@example.com","items":[{"productId":"daily-glow-duo","qty":1},{"productId":"dew-drop-serum","qty":1}],"total":56,"status":"processing","createdAt":"2026-09-20"},
+  {"id":"HL-1003","customer":"Hearin Huynh","email":"hearin@example.com","items":[{"productId":"soft-glow-set","qty":1}],"total":34,"status":"pending","createdAt":"2026-09-22"}
+]

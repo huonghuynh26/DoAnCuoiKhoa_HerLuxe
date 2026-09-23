@@ -1,0 +1,8 @@
+import { Link, useSearchParams } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
+import { collections } from "../resources/collections";
+import { getProducts } from "../resources/mockStore";
+
+export default function Collections() { const [params, setParams] = useSearchParams(); const selected = params.get("collection"); const active = collections.find((item) => item.id === selected); const products = getProducts().filter((item) => !active || active.category === "All" || item.category === active.category); return <div className="page collections-page"><Header /><main className="collections-main"><div className="collections-intro"><p className="eyebrow">Explore HerLuxe</p><h1>Discover your collection</h1><p>Choose a carefully edited collection, then explore the products that fit your ritual.</p></div><div className="collection-showcase">{collections.map((item) => <button key={item.id} className={`collection-banner ${item.accent} ${selected === item.id ? "selected" : ""}`} onClick={() => setParams({ collection: item.id })}><img src={item.image} alt={item.title} /><span><small>{item.category}</small><strong>{item.title}</strong><em>{item.subtitle}</em></span></button>)}</div><div className="collection-products"><div className="section-heading"><div><p className="eyebrow">{active ? active.title : "Full edit"}</p><h2>{active ? "Selected products" : "All collection products"}</h2></div>{active && <Link className="text-link" to="/collections">Clear filter</Link>}</div><div className="browse-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div></div></main><Footer /></div>; }

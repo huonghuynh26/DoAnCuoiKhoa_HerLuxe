@@ -7,6 +7,11 @@
   --hl-accent: #a86567;
 }
 
+/* Đảm bảo toàn bộ các trang khi có Header đều được đẩy xuống, không bị che khuất */
+body, .page {
+  padding-top: 50px; /* Điều chỉnh con số này nếu header của bạn cao hơn hoặc thấp hơn */
+}
+
 /* Tự động bù khoảng trống khi click vọt tới các section #id */
 html {
   scroll-behavior: smooth;
