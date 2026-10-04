@@ -42,9 +42,12 @@ The users API adapter is in `src/resources/api.js`. It keeps the existing endpoi
 ```bash
 cp .env.example .env
 # Set VITE_MINDX_USERS_API_URL to your users resource endpoint
+# Set VITE_MINDX_PRODUCTS_API_URL to your products resource endpoint
 ```
 
 Login and registration try the remote users resource first, merge it with the local demo accounts when password fields are missing, and fall back to localStorage when the endpoint is unavailable. This makes local development safe without removing your Postman integration.
+
+The storefront also loads products from `VITE_MINDX_PRODUCTS_API_URL` when the app starts, normalizes the MindX nested resource response, updates the local cache, and falls back to `src/resources/json/products.json` if the endpoint is unavailable. The default products URL uses the complete API key (`...4dba`); a shortened key returns an ObjectId error from the API.
 
 ## Structure
 

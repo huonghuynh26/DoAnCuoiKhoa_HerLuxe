@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
-import { getProducts } from "../resources/mockStore";
+import { useProducts } from "../resources/mockStore";
 
 export default function Home() {
-  const products = getProducts();
+  const products = useProducts();
   const [newsletter, setNewsletter] = useState(false);
 
   return (

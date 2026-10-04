@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { seedProducts } from "./products";
 import { sampleOrders, sampleUsers } from "./sampleData";
 
@@ -41,6 +42,23 @@ export const getOrders = () => readResource("orders", sampleOrders);
 export const saveOrders = (orders) => writeResource("orders", orders);
 export const getUsers = () => readResource("users", sampleUsers);
 export const saveUsers = (users) => writeResource("users", users);
+
+export function useProducts() {
+  const [products, setProducts] = useState(getProducts);
+
+  useEffect(() => {
+    const refresh = () => setProducts(getProducts());
+    window.addEventListener("herluxe-resource-change", refresh);
+    window.addEventListener("herluxe-resource-reset", refresh);
+    return () => {
+      window.removeEventListener("herluxe-resource-change", refresh);
+      window.removeEventListener("herluxe-resource-reset", refresh);
+    };
+  }, []);
+
+  return products;
+}
+
 export const getCurrentUser = () => readResource("currentUser", null);
 export const saveCurrentUser = (user) => {
   writeResource("currentUser", user);

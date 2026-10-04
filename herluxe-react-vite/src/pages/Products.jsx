@@ -6,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { useAuth } from "../components/AuthContext";
 import { useCart } from "../components/CartContext";
 import { categories } from "../resources/products";
-import { getProducts } from "../resources/mockStore";
+import { useProducts } from "../resources/mockStore";
 
 // So khớp tag không phân biệt hoa/thường và khoảng trắng ("Best seller" = "Bestseller")
 const normalize = (value) =>
@@ -19,7 +19,7 @@ const tagTabs = { "Best sellers": "Bestseller", "New arrivals": "New" };
 
 export default function Products() {
   const [params, setParams] = useSearchParams();
-  const products = getProducts();
+  const products = useProducts();
   const category = params.get("category") || "All";
   const tag = params.get("tag") || "";
   const tagLabel =
@@ -127,7 +127,8 @@ export default function Products() {
 }
 
 function ProductDetailInline({ id }) {
-  const product = getProducts().find((item) => item.id === id);
+  const products = useProducts();
+  const product = products.find((item) => item.id === id);
   return (
     <div className="page products-page">
       <Header />
