@@ -82,3 +82,4 @@ export const resourceSnapshot = () => ({
   orders: getOrders(),
   collections: readResource("collections", []),
 });
+  

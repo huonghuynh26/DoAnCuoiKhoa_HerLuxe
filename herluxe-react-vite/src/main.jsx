@@ -11,5 +11,6 @@ import "./styles/faq.css";
 import "./styles/style.css";
 import "./styles/register.css";
 import "./styles/app.css";
+import "./styles/admin.css";
 
 createRoot(document.getElementById("root")).render(<React.StrictMode><App /></React.StrictMode>);
