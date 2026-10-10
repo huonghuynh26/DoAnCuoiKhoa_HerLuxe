@@ -145,16 +145,35 @@ body {
   font-weight: 400;
   margin-bottom: 8px;
 }
+
+/* REMOVE BUTTON */
 .cart-item-remove {
+  display: inline-block;
+  padding: 4px 0;
   border: none;
+  border-bottom: 1px solid transparent;
   background: transparent;
-  color: #999;
+  color: #888;
+  font-family: inherit;
   font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
   cursor: pointer;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
+
 .cart-item-remove:hover {
   color: #a86567;
+  border-bottom-color: #a86567;
 }
+
+.cart-item-remove:focus-visible {
+  outline: 1px solid #a86567;
+  outline-offset: 4px;
+}
+
 /* ==============================
    CART SUMMARY
 ================================ */
