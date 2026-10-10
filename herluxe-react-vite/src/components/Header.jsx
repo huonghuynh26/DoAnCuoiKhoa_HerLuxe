@@ -44,7 +44,7 @@ export default function Header() {
             to={isAdmin ? "/admin" : "/"}
             aria-label="HerLuxe home"
           >
-            <img src="/images/logo4.png" alt="HerLuxe Logo" />
+            <img src="/images/logo/logo4.png" alt="HerLuxe Logo" />
           </Link>
           <button
             className="hl-menu-toggle"
