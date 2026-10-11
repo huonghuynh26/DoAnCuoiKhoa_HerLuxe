@@ -1,0 +1,70 @@
+/* Product image upload (admin product modal) */
+.product-image-field {
+  display: grid;
+  gap: 8px;
+}
+.product-image-label {
+  color: #71625d;
+  font-size: 11px;
+}
+.product-image-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.product-image-preview {
+  flex: 0 0 112px;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f6f1ee;
+  border: 1px solid #e7dfdc;
+  color: #b8a9a4;
+  font-size: 24px;
+}
+.product-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-image-controls {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.product-image-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.product-image-actions .button {
+  padding: 10px 14px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.product-image-actions select {
+  flex: 1;
+  min-width: 150px;
+}
+.product-image-controls small {
+  color: #9b8d88;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.product-image-controls .product-image-error {
+  color: #a8433d;
+}
+@media (max-width: 760px) {
+  .product-image-row {
+    flex-direction: column;
+  }
+  .product-image-preview {
+    width: 100%;
+    flex-basis: auto;
+    height: 170px;
+  }
+}
