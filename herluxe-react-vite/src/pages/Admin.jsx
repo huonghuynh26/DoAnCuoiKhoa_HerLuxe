@@ -12,8 +12,9 @@ import {
   saveProducts,
   saveUsers,
 } from "../resources/mockStore";
+import ProductImageField from "../components/ProductImageField";
 
-const categories = ["Makeup", "Skincare", "Lips", "Complexion", "Body care"];
+const categories = ["Makeup", "Skincare", "Lips", "Body care"];
 const statuses = ["pending", "processing", "completed", "cancelled"];
 const imageOptions = [
   "/images/lips/lipbalm1.png",
@@ -48,7 +49,7 @@ const emptyProduct = {
   category: "Skincare",
   tag: "New",
   price: 0,
-  image: "/images/Cream.png",
+  image: "/images/skincare/serum.png",
   shortDescription: "",
   description: "",
   stock: 0,
@@ -1468,19 +1469,10 @@ function ProductModal({ editing, product, onClose, onSave }) {
                 placeholder="New, Bestseller, Limited"
               />
             </label>
-            <label>
-              Product image
-              <select
-                value={form.image}
-                onChange={(event) => update("image", event.target.value)}
-              >
-                {imageOptions.map((item) => (
-                  <option key={item} value={item}>
-                    {item.replace("/images/", "").replace(".png", "")}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <ProductImageField
+              value={form.image}
+              onChange={(image) => update("image", image)}
+            />
           </div>
           <label>
             Short description
