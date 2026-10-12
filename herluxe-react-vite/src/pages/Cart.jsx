@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "../components/CartContext";
@@ -6,6 +6,9 @@ import { useCart } from "../components/CartContext";
 export default function Cart() {
   const { items, subtotal, shipping, total, updateQty, removeFromCart } =
     useCart();
+  const navigate = useNavigate();
+  const maxQty = (product) =>
+    Number.isFinite(Number(product.stock)) ? Number(product.stock) : Infinity;
   return (
     <div className="page cart-page">
       <Header />
@@ -48,11 +51,23 @@ export default function Cart() {
                     <input
                       value={qty}
                       onChange={(e) =>
-                        updateQty(product.id, Number(e.target.value) || 0)
+                        updateQty(
+                          product.id,
+                          Math.min(
+                            Number(e.target.value) || 0,
+                            maxQty(product),
+                          ),
+                        )
                       }
                     />
                     <button
-                      onClick={() => updateQty(product.id, qty + 1)}
+                      onClick={() =>
+                        updateQty(
+                          product.id,
+                          Math.min(qty + 1, maxQty(product)),
+                        )
+                      }
+                      disabled={qty >= maxQty(product)}
                       aria-label="Increase quantity"
                     >
                       +
@@ -90,9 +105,7 @@ export default function Cart() {
               </div>
               <button
                 className="checkout-btn"
-                onClick={() =>
-                  alert("Demo checkout: connect your checkout resource here.")
-                }
+                onClick={() => navigate("/checkout")}
               >
                 Proceed to checkout
               </button>

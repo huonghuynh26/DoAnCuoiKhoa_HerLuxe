@@ -13,6 +13,7 @@ import { saveProducts } from "./resources/mockStore";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
@@ -99,6 +100,14 @@ export default function App() {
                 element={
                   <RequireCustomer>
                     <Cart />
+                  </RequireCustomer>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <RequireCustomer>
+                    <Checkout />
                   </RequireCustomer>
                 }
               />

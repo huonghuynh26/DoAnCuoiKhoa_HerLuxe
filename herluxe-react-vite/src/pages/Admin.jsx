@@ -20,6 +20,7 @@ import {
   migrateGroupedProducts,
   updateProduct,
 } from "../resources/productsApi";
+import { fetchOrders, updateOrder } from "../resources/ordersApi";
 
 const categories = ["Makeup", "Skincare", "Lips", "Body care"];
 const statuses = ["pending", "processing", "completed", "cancelled"];
@@ -172,6 +173,21 @@ export default function Admin() {
     return () => {
       window.removeEventListener("herluxe-resource-change", refresh);
       window.removeEventListener("herluxe-resource-reset", refresh);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Đơn hàng lấy từ MindX; nếu API lỗi thì giữ dữ liệu cục bộ.
+    let active = true;
+    fetchOrders()
+      .then((list) => {
+        if (!active) return;
+        setOrders(list);
+        saveOrders(list);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
     };
   }, []);
 
@@ -330,20 +346,28 @@ export default function Admin() {
     }
   };
 
-  const updateOrderStatus = (orderId, status) => {
+  const updateOrderStatus = async (orderId, status) => {
+    const target = orders.find((order) => order.id === orderId);
+    const updated = target && {
+      ...target,
+      status,
+      updatedAt: new Date().toISOString(),
+    };
     const next = orders.map((order) =>
-      order.id === orderId
-        ? { ...order, status, updatedAt: new Date().toISOString() }
-        : order,
+      order.id === orderId ? updated : order,
     );
     setOrders(next);
     saveOrders(next);
-    setOrderModal((current) =>
-      current?.id === orderId
-        ? next.find((order) => order.id === orderId)
-        : current,
-    );
-    notify(`Order ${orderId} moved to ${statusLabel(status)}.`);
+    setOrderModal((current) => (current?.id === orderId ? updated : current));
+    try {
+      await updateOrder(updated);
+      notify(`Order ${orderId} moved to ${statusLabel(status)}.`);
+    } catch (error) {
+      notify(
+        `Changed in this browser, but the API sync failed (${error.message}).`,
+        "error",
+      );
+    }
   };
 
   const updateUserRole = (userId, role) => {
