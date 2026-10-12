@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -7,7 +6,6 @@ import { useProducts } from "../resources/mockStore";
 
 export default function Home() {
   const products = useProducts();
-  const [newsletter, setNewsletter] = useState(false);
 
   return (
     <div className="page home-page">
@@ -18,7 +16,8 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow">New season · Soft focus beauty</p>
             <h1>
-              Feel good in<br />
+              Feel good in
+              <br />
               <em>your own skin.</em>
             </h1>
             <p className="hero-description">
@@ -30,7 +29,8 @@ export default function Home() {
                 Shop the edit <i className="fa-solid fa-arrow-right"></i>
               </a>
               <Link className="text-link" to="/about">
-                Our story <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                Our story{" "}
+                <i className="fa-solid fa-arrow-up-right-from-square"></i>
               </Link>
             </div>
             <div className="hero-notes">
@@ -45,7 +45,9 @@ export default function Home() {
           <div className="hero-art">
             <div className="hero-art-glow"></div>
             <div className="hero-stamp">
-              HER<br />LUXE
+              HER
+              <br />
+              LUXE
             </div>
             <div className="hero-image-frame">
               <img
@@ -56,7 +58,8 @@ export default function Home() {
             <div className="hero-product-note">
               <span>01 / 04</span>
               <strong>
-                Everyday<br />
+                Everyday
+                <br />
                 radiance
               </strong>
               <small>Makeup edit</small>
@@ -64,7 +67,8 @@ export default function Home() {
             <div className="hero-float-card">
               <span>Editor's pick</span>
               <strong>
-                Rose veil<br />
+                Rose veil
+                <br />
                 cream blush
               </strong>
               <b>$24.00</b>
@@ -77,28 +81,32 @@ export default function Home() {
           <div>
             <i className="fa-solid fa-leaf"></i>
             <span>
-              Clean beauty<br />
+              Clean beauty
+              <br />
               <small>made simple</small>
             </span>
           </div>
           <div>
             <i className="fa-solid fa-sparkles"></i>
             <span>
-              Small rituals<br />
+              Small rituals
+              <br />
               <small>big confidence</small>
             </span>
           </div>
           <div>
             <i className="fa-solid fa-box-open"></i>
             <span>
-              Carefully packed<br />
+              Carefully packed
+              <br />
               <small>with love</small>
             </span>
           </div>
           <div>
             <i className="fa-solid fa-heart"></i>
             <span>
-              Made for you<br />
+              Made for you
+              <br />
               <small>every single day</small>
             </span>
           </div>
@@ -110,7 +118,8 @@ export default function Home() {
             <div>
               <p className="eyebrow">The edit</p>
               <h2>
-                Little luxuries,<br />
+                Little luxuries,
+                <br />
                 <em>made for every day.</em>
               </h2>
             </div>
@@ -133,7 +142,8 @@ export default function Home() {
           <div className="feature-copy">
             <p className="eyebrow">A better beauty ritual</p>
             <h2>
-              Your skin,<br />
+              Your skin,
+              <br />
               <em>your softest statement.</em>
             </h2>
             <p>
@@ -146,7 +156,8 @@ export default function Home() {
             <div className="feature-stat">
               <strong>100%</strong>
               <span>
-                made to fit into<br />
+                made to fit into
+                <br />
                 real life
               </span>
             </div>
@@ -161,7 +172,8 @@ export default function Home() {
               <h2>Best sellers</h2>
             </div>
             <p className="section-caption">
-              The pieces our community reaches for<br />
+              The pieces our community reaches for
+              <br />
               again and again.
             </p>
           </div>
@@ -169,11 +181,13 @@ export default function Home() {
             <div className="editorial-tile">
               <span className="editorial-number">02</span>
               <p>
-                Beauty is not<br />
+                Beauty is not
+                <br />
                 <em>one-size-fits-all.</em>
               </p>
               <Link to="/about">
-                Read our philosophy <i className="fa-solid fa-arrow-up-right"></i>
+                Read our philosophy{" "}
+                <i className="fa-solid fa-arrow-up-right"></i>
               </Link>
             </div>
             <div className="mini-product-list">
@@ -214,46 +228,6 @@ export default function Home() {
             yourself.
           </blockquote>
           <p>— HerLuxe journal</p>
-        </section>
-
-        {/* NEWSLETTER SECTION */}
-        <section className="newsletter-section" id="bag">
-          <div>
-            <p className="eyebrow">Stay in the glow</p>
-            <h2>
-              Notes from<br />
-              <em>HerLuxe.</em>
-            </h2>
-          </div>
-          <div>
-            <p>
-              New launches, beauty notes and a little more softness in your
-              inbox.
-            </p>
-            <form
-              className="newsletter-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setNewsletter(true);
-              }}
-            >
-              <input
-                type="email"
-                placeholder="Your email address"
-                required
-              />
-              <button type="submit">
-                {newsletter ? (
-                  "You’re on the list"
-                ) : (
-                  <>
-                    Join us <i className="fa-solid fa-arrow-right"></i>
-                  </>
-                )}
-              </button>
-            </form>
-            <small>By subscribing, you agree to receive HerLuxe updates.</small>
-          </div>
         </section>
       </main>
       <Footer />

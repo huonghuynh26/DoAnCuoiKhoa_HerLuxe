@@ -8,7 +8,8 @@
 }
 
 /* Đảm bảo toàn bộ các trang khi có Header đều được đẩy xuống, không bị che khuất */
-body, .page {
+body,
+.page {
   padding-top: 50px; /* Điều chỉnh con số này nếu header của bạn cao hơn hoặc thấp hơn */
 }
 
@@ -208,6 +209,55 @@ html {
   color: white;
 }
 
+/* Lời chào + nút đăng xuất */
+.hl-user-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: 6px;
+}
+.hl-welcome {
+  max-width: 190px;
+  overflow: hidden;
+  color: var(--hl-muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: default;
+}
+.hl-welcome strong {
+  color: var(--hl-ink);
+  font-weight: 500;
+}
+.hl-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--hl-ink);
+  background: transparent;
+  color: var(--hl-ink);
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+.hl-logout-btn i {
+  font-size: 11px;
+}
+.hl-logout-btn:hover {
+  background: var(--hl-ink);
+  color: #fff;
+}
+.hl-nav-user {
+  display: none;
+}
+
 /* Menu Toggle Button (Mobile) */
 .hl-menu-toggle {
   display: none;
@@ -247,7 +297,39 @@ html {
 }
 
 /* Responsive layout */
+@media (max-width: 1100px) {
+  .hl-welcome {
+    display: none;
+  }
+}
 @media (max-width: 850px) {
+  .hl-user-area {
+    display: none;
+  }
+  .hl-nav-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0 0;
+    color: var(--hl-muted);
+    font-size: 13px;
+  }
+  .hl-nav-user strong {
+    color: var(--hl-ink);
+    font-weight: 500;
+  }
+  .hl-nav-user button {
+    padding: 9px 14px;
+    border: 1px solid var(--hl-ink);
+    background: transparent;
+    color: var(--hl-ink);
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
   .hl-header-shell {
     width: min(100% - 32px, 680px);
     min-height: 70px;
@@ -305,8 +387,8 @@ html {
 
 .hl-inline-search {
   position: relative;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -319,10 +401,10 @@ html {
 
 .hl-icon-btn {
   position: relative;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  border: none;
+  border: 1px solid var(--hl-line);
   background: transparent;
   color: var(--hl-ink);
   cursor: pointer;
@@ -341,14 +423,17 @@ html {
 }
 
 .hl-icon-btn:hover {
-  background: rgba(45, 37, 37, 0.06);
+  border-color: var(--hl-ink);
+  background: var(--hl-ink);
+  color: #fff;
 }
 
 .hl-icon-btn:active {
   transform: scale(0.92);
 }
 
-.hl-icon-btn i {
+.hl-icon-btn i,
+.hl-icon-btn svg {
   position: absolute;
   font-size: 13px;
   transition:
@@ -391,8 +476,8 @@ html {
   top: 50%;
   transform: translateY(-50%);
 
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -400,10 +485,10 @@ html {
   background: rgba(247, 247, 247, 0.98);
 
   border: 1px solid transparent;
-  border-radius: 17px;
+  border-radius: 18px;
 
-  /* Padding thu gọn: trái 12px, phải 32px cho nút bấm */
-  padding: 0 32px 0 12px;
+  /* Padding thu gọn: trái 14px, phải 38px cho nút bấm */
+  padding: 0 38px 0 14px;
 
   opacity: 0;
   visibility: hidden;
@@ -486,7 +571,7 @@ html {
 
 .hl-search-clear {
   position: absolute;
-  right: 32px;
+  right: 38px;
 
   width: 18px;
   height: 18px;

@@ -23,6 +23,7 @@ export default function Header() {
     ["Best sellers", "/products?tag=Bestseller"],
     ["About us", "/about"],
   ];
+  const displayName = user?.name || user?.email || "there";
   const logout = () => {
     signOut();
     navigate("/");
@@ -87,6 +88,16 @@ export default function Header() {
                 ),
               )
             )}
+            {user && (
+              <div className="hl-nav-user">
+                <span>
+                  Welcome, <strong>{displayName}</strong>
+                </span>
+                <button type="button" onClick={logout}>
+                  Sign out
+                </button>
+              </div>
+            )}
           </nav>
           <div className="hl-header-actions">
             {!isAdmin && (
@@ -118,8 +129,33 @@ export default function Header() {
                   onClick={() => setSearchOpen(!searchOpen)}
                   aria-label="Open search"
                 >
-                  <i className="fa-solid fa-magnifying-glass search-icon"></i>
-                  <i className="fa-solid fa-xmark close-icon"></i>
+                  <svg
+                    className="search-icon"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="10.5" cy="10.5" r="6.5" />
+                    <path d="M15.5 15.5 21 21" />
+                  </svg>
+                  <svg
+                    className="close-icon"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 6l12 12M18 6 6 18" />
+                  </svg>
                 </button>
               </div>
             )}
@@ -139,12 +175,19 @@ export default function Header() {
               </Link>
             )}
             {user ? (
-              <button
-                className="hl-signin-link hl-logout-link"
-                onClick={logout}
-              >
-                {isAdmin ? "Sign out" : user.name || "Profile"}
-              </button>
+              <div className="hl-user-area">
+                <span className="hl-welcome" title={displayName}>
+                  Welcome, <strong>{displayName}</strong>
+                </span>
+                <button
+                  className="hl-logout-btn"
+                  type="button"
+                  onClick={logout}
+                >
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                  Sign out
+                </button>
+              </div>
             ) : (
               <Link className="hl-signin-link" to="/login">
                 Sign in
