@@ -13,6 +13,13 @@ import {
   saveUsers,
 } from "../resources/mockStore";
 import ProductImageField from "../components/ProductImageField";
+import {
+  createProduct,
+  deleteProduct,
+  fetchProducts,
+  migrateGroupedProducts,
+  updateProduct,
+} from "../resources/productsApi";
 
 const categories = ["Makeup", "Skincare", "Lips", "Body care"];
 const statuses = ["pending", "processing", "completed", "cancelled"];
@@ -251,7 +258,7 @@ export default function Admin() {
       });
   }, [users, orders, customerSearch]);
 
-  const saveProduct = (event, form, editing) => {
+  const saveProduct = async (event, form, editing) => {
     event.preventDefault();
     const nextProduct = {
       ...form,
@@ -263,23 +270,64 @@ export default function Admin() {
     const next = editing
       ? products.map((item) => (item.id === form.id ? nextProduct : item))
       : [...products, nextProduct];
+    // Lưu tạm trong trình duyệt để giao diện cập nhật ngay.
     setProducts(next);
     saveProducts(next);
     setProductModal(null);
-    notify(
-      editing ? "Product changes saved." : "Product added to the catalog.",
-    );
+    try {
+      // Ghi lên API MindX (thêm mới = POST, sửa = PUT theo _id).
+      if (editing) await updateProduct(nextProduct);
+      else await createProduct(nextProduct);
+      // Đọc lại để lấy _id server vừa tạo, dùng cho lần sửa/xóa sau.
+      const fresh = await fetchProducts();
+      if (fresh.length) {
+        saveProducts(fresh);
+        setProducts(fresh);
+      }
+      notify(
+        editing ? "Product changes saved." : "Product added to the catalog.",
+      );
+    } catch (error) {
+      notify(
+        `Saved in this browser, but the API sync failed (${error.message}).`,
+        "error",
+      );
+    }
   };
 
-  const removeProduct = (product) => {
+  const removeProduct = async (product) => {
     if (
       !window.confirm(`Delete ${product.name}? This action cannot be undone.`)
+    )
+      return;
+    if (
+      product._grouped &&
+      !window.confirm(
+        "This product is stored in a grouped record on the API. Convert all grouped products into individual records first?",
+      )
     )
       return;
     const next = products.filter((item) => item.id !== product.id);
     setProducts(next);
     saveProducts(next);
-    notify("Product removed from the catalog.");
+    try {
+      let target = product;
+      if (product._grouped) {
+        await migrateGroupedProducts();
+        const fresh = await fetchProducts();
+        target = fresh.find((item) => item.id === product.id);
+      }
+      if (target?._id) await deleteProduct(target);
+      const fresh = await fetchProducts();
+      saveProducts(fresh);
+      setProducts(fresh);
+      notify("Product removed from the catalog.");
+    } catch (error) {
+      notify(
+        `Removed in this browser, but the API sync failed (${error.message}).`,
+        "error",
+      );
+    }
   };
 
   const updateOrderStatus = (orderId, status) => {
@@ -855,7 +903,8 @@ function ProductsPanel({
                       <div>
                         <strong>{product.name}</strong>
                         <small>
-                          {product.id} · {product.tag}
+                          {product.id}
+                          {product.tag ? ` · ${product.tag}` : ""}
                         </small>
                       </div>
                     </div>
@@ -1463,11 +1512,17 @@ function ProductModal({ editing, product, onClose, onSave }) {
             </label>
             <label>
               Collection tag
-              <input
-                value={form.tag}
+              <select
+                value={form.tag ?? ""}
                 onChange={(event) => update("tag", event.target.value)}
-                placeholder="New, Bestseller, Limited"
-              />
+              >
+                <option value="New">New</option>
+                <option value="Bestseller">Bestseller</option>
+                <option value="">None</option>
+                {form.tag && !["New", "Bestseller"].includes(form.tag) && (
+                  <option value={form.tag}>{form.tag}</option>
+                )}
+              </select>
             </label>
             <ProductImageField
               value={form.image}
@@ -1496,7 +1551,7 @@ function ProductModal({ editing, product, onClose, onSave }) {
           <div className="modal-form-footer">
             <span>
               <i className="fa-solid fa-circle-info"></i> Changes are saved to
-              this browser workspace.
+              this browser and synced to the HerLuxe API.
             </span>
             <div>
               <button
