@@ -203,7 +203,7 @@ button {
   height: 80%;
   overflow: hidden;
   background: linear-gradient(145deg, #edd9d0, #b98585);
-  border-radius: 48% 48% 4px 4px;
+  border-radius: 48% 48% 26px 26px;
   box-shadow: 28px 30px 0 rgba(232, 207, 201, 0.48);
 }
 
@@ -380,6 +380,7 @@ button {
 .product-card {
   position: relative;
   padding: 13px;
+  border-radius: 22px;
   background: #f5e8e4;
   transition:
     transform 200ms ease,
@@ -417,6 +418,7 @@ button {
 
 .product-visual {
   position: relative;
+  border-radius: 16px;
   height: 235px;
   display: grid;
   place-items: center;
@@ -490,6 +492,10 @@ button {
    4. FEATURE BAND (SKINCARE)
    ========================================================================== */
 .feature-band {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   min-height: 550px;
@@ -590,6 +596,7 @@ button {
 
 .editorial-tile {
   position: relative;
+  border-radius: 24px;
   min-height: 370px;
   display: flex;
   flex-direction: column;
@@ -1079,4 +1086,62 @@ button {
 .toast.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* ==========================================================================
+   OUT OF STOCK
+   ========================================================================== */
+.product-card.is-sold-out .product-visual img {
+  filter: grayscale(0.85);
+  opacity: 0.55;
+}
+.product-card.is-sold-out:hover .product-visual img {
+  transform: none;
+}
+.sold-out-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  padding: 10px 22px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: rgba(45, 37, 37, 0.82);
+  color: #fff;
+  font:
+    600 clamp(13px, 1.5vw, 17px) "DM Sans",
+    sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  box-shadow: 0 8px 22px rgba(45, 37, 37, 0.25);
+  pointer-events: none;
+}
+.product-card button.is-sold-out-btn {
+  color: #9a8a88;
+  cursor: not-allowed;
+}
+.product-card button.is-sold-out-btn:hover {
+  color: #9a8a88;
+}
+.stock-notice {
+  margin: 8px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fdeceb;
+  color: #a2403f;
+  font-size: 12px;
+  line-height: 1.5;
+  animation: stockNoticeIn 0.3s ease both;
+}
+@keyframes stockNoticeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

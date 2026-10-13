@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -163,9 +163,21 @@ function ProductInfo({ product }) {
   const { addToCart } = useCart();
   const { isAuthenticated, isAdmin } = useAuth();
   const [quantity, setQuantity] = useState(1);
+  const [notice, setNotice] = useState(false);
   const navigate = useNavigate();
+  const soldOut = product.stock != null && Number(product.stock) <= 0;
+  const maxQty = soldOut ? 1 : Math.max(1, Number(product.stock) || 99);
+  useEffect(() => {
+    if (!notice) return undefined;
+    const timer = setTimeout(() => setNotice(false), 2800);
+    return () => clearTimeout(timer);
+  }, [notice]);
   const handleAddToCart = () => {
     if (isAdmin) return;
+    if (soldOut) {
+      setNotice(true);
+      return;
+    }
     if (!isAuthenticated) {
       navigate(
         `/login?redirect=${encodeURIComponent(`/products?id=${product.id}`)}&notice=signin`,
@@ -176,8 +188,9 @@ function ProductInfo({ product }) {
   };
   return (
     <div className="product-detail-container">
-      <div className="product-detail-image">
+      <div className={`product-detail-image ${soldOut ? "is-sold-out" : ""}`}>
         <img src={product.image} alt={product.name} />
+        {soldOut && <span className="sold-out-badge">Out of stock</span>}
       </div>
       <div className="product-detail-info">
         <p className="product-category">{product.category}</p>
@@ -193,27 +206,40 @@ function ProductInfo({ product }) {
             <input
               value={quantity}
               onChange={(e) =>
-                setQuantity(Math.max(1, Number(e.target.value) || 1))
+                setQuantity(
+                  Math.min(maxQty, Math.max(1, Number(e.target.value) || 1)),
+                )
               }
             />
-            <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <button onClick={() => setQuantity(Math.min(maxQty, quantity + 1))}>
+              +
+            </button>
           </div>
           <button
             disabled={isAdmin}
-            className="add-to-cart-btn"
+            className={`add-to-cart-btn ${soldOut ? "is-sold-out-btn" : ""}`}
             onClick={handleAddToCart}
           >
             {isAdmin
               ? "Admin view only"
-              : isAuthenticated
-                ? "Add to bag"
-                : "Sign in to shop"}
+              : soldOut
+                ? "Out of stock"
+                : isAuthenticated
+                  ? "Add to bag"
+                  : "Sign in to shop"}
           </button>
         </div>
-        <p className="add-to-cart-note">
+        {notice && (
+          <p className="stock-notice detail" role="alert">
+            Sorry, this product is currently out of stock.
+          </p>
+        )}
+        <p className={`add-to-cart-note ${soldOut ? "is-out" : ""}`}>
           {isAdmin
             ? "Shopping is disabled in the admin workspace."
-            : `Only ${product.stock} left in stock.`}
+            : soldOut
+              ? "Out of stock — please check back soon."
+              : `Only ${product.stock} left in stock.`}
         </p>
         <Link to="/products" className="back-to-shop">
           ← Continue browsing

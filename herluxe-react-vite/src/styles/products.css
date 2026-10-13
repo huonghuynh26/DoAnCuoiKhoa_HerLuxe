@@ -58,6 +58,8 @@ body {
    PRODUCT IMAGE
 ================================ */
 .product-detail-image {
+  position: relative;
+  border-radius: 24px;
   width: 100%;
   aspect-ratio: 1 / 1;
   background: rgb(248, 225, 228);
@@ -297,4 +299,31 @@ body {
     grid-template-columns: 1fr;
     gap: 30px;
   }
+}
+
+/* OUT OF STOCK (trang chi tiết) */
+.product-detail-image.is-sold-out img {
+  filter: grayscale(0.85);
+  opacity: 0.55;
+}
+.product-detail-image .sold-out-badge {
+  font-size: 20px;
+  padding: 14px 30px;
+}
+.add-to-cart-btn.is-sold-out-btn {
+  background: #b9aeac;
+  cursor: not-allowed;
+}
+.add-to-cart-note.is-out {
+  color: #a2403f;
+}
+.stock-notice.detail {
+  margin: 0 0 12px;
+}
+.quantity-box {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.add-to-cart-btn {
+  border-radius: 10px;
 }

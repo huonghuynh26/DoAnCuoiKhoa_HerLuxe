@@ -137,9 +137,11 @@ body {
    HERO IMAGE
 ================================ */
 .about-image {
-  width: 100%;
+  width: min(1180px, calc(100% - 48px));
   height: 430px;
+  margin: 0 auto;
   overflow: hidden;
+  border-radius: 28px;
 }
 .about-image img {
   width: 100%;
@@ -171,6 +173,7 @@ body {
   gap: 25px;
 }
 .philosophy-item {
+  border-radius: 18px;
   min-height: 130px;
   border: 1px solid #222;
   padding: 25px 20px;
@@ -255,11 +258,13 @@ body {
 ================================ */
 .story-image {
   height: 100%;
+  padding: 36px 36px 36px 0;
 }
 .story-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 24px;
 }
 /* ==============================
    VALUES
@@ -282,6 +287,7 @@ body {
   gap: 25px;
 }
 .value-card {
+  border-radius: 18px;
   padding: 30px 20px;
   background: #fafafa;
   border: 1px solid #eeeeee;
@@ -313,26 +319,22 @@ body {
   color: white;
   margin-bottom: 35px;
 }
-.testimonial-box {
-  max-width: 850px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  text-align: left;
-  background: #f8e1e4;
-  color: #222;
-}
 .testimonial-image {
-  height: 190px;
+  position: relative;
+  min-height: 230px;
+  align-self: stretch;
 }
 .testimonial-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 10%;
+  object-position: center 22%;
 }
 .testimonial-content {
   padding: 30px 40px;
+  align-self: center;
 }
 .testimonial-content > i {
   font-size: 18px;
@@ -359,16 +361,6 @@ body {
   display: flex;
   align-items: center;
   gap: 25px;
-}
-.testimonial-box {
-  flex: 1;
-  max-width: 850px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  text-align: left;
-  background: #f8e1e4;
-  color: #222;
 }
 .testimonial-btn {
   width: 40px;
@@ -409,6 +401,8 @@ body {
   transform: scale(1.2);
 }
 .testimonial-box {
+  position: relative;
+  flex: 1;
   max-width: 850px;
   margin: auto;
   display: grid;
@@ -416,17 +410,159 @@ body {
   text-align: left;
   background: #f8e1e4;
   color: #222;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+  animation: tBoxIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.testimonial-box.dir-prev {
+  animation-name: tBoxInPrev;
+}
+/* chữ ký trang trí phía sau */
+.testimonial-box::after {
+  content: "\201C";
+  position: absolute;
+  right: 26px;
+  top: -34px;
+  font-family: Georgia, serif;
+  font-size: 190px;
+  line-height: 1;
+  color: rgba(168, 101, 103, 0.14);
+  pointer-events: none;
+  animation: tQuoteFloat 0.9s ease both 0.2s;
+}
+.testimonial-image {
+  overflow: hidden;
+}
+.testimonial-image img {
+  transform-origin: center;
+  animation: tImgReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.testimonial-content > * {
+  animation: tRise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.testimonial-content > i {
+  animation-name: tPop;
+  animation-duration: 0.6s;
+  animation-delay: 0.15s;
+  color: #a86567;
+}
+.testimonial-content > p {
+  animation-delay: 0.25s;
+}
+.testimonial-content > h3 {
+  animation-delay: 0.38s;
+}
+.testimonial-content > span {
+  display: block;
+  animation-delay: 0.46s;
+}
+.testimonial-count {
+  display: block;
+  margin-top: 14px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #a86567;
+  animation: tRise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.55s;
+}
+.testimonial-btn {
+  border-radius: 50%;
+}
+.testimonial-btn:hover {
+  transform: scale(1.1);
+}
+.testimonial-btn.prev:active {
+  transform: translateX(-4px);
+}
+.testimonial-btn.next:active {
+  transform: translateX(4px);
+}
+.dot {
+  width: 8px;
   transition:
-    transform 0.4s ease,
-    opacity 0.4s ease;
+    width 0.35s ease,
+    background 0.35s ease;
 }
-.testimonial-box.slide-left {
-  transform: translateX(-60px);
-  opacity: 0;
+.dot.active {
+  width: 26px;
+  border-radius: 99px;
+  transform: none;
 }
-.testimonial-box.slide-right {
-  transform: translateX(60px);
-  opacity: 0;
+@keyframes tBoxIn {
+  from {
+    opacity: 0;
+    transform: translateX(70px) scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes tBoxInPrev {
+  from {
+    opacity: 0;
+    transform: translateX(-70px) scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes tImgReveal {
+  from {
+    transform: scale(1.35);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    transform: scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes tRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-25deg);
+  }
+  70% {
+    transform: scale(1.25) rotate(6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tQuoteFloat {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-box,
+  .testimonial-box::after,
+  .testimonial-image img,
+  .testimonial-content > *,
+  .testimonial-count {
+    animation: none !important;
+  }
 }
 /* ==============================
    COLLECTION
@@ -444,6 +580,9 @@ body {
   gap: 20px;
 }
 .collection-item {
+  color: #222;
+  text-decoration: none;
+  border-radius: 16px;
   height: 85px;
   display: flex;
   align-items: center;
@@ -457,8 +596,12 @@ body {
 .collection-item i {
   font-size: 15px;
 }
+.collection-item:visited {
+  color: #222;
+}
 .collection-item:hover {
   background: #f8e1e4;
+  transform: translateY(-3px);
 }
 /* ==============================
    BACK TO TOP
@@ -573,6 +716,7 @@ body {
   }
   .story-image {
     height: 350px;
+    padding: 0 24px 24px;
   }
 }
 /* ==============================
@@ -607,6 +751,8 @@ body {
   }
   .about-image {
     height: 280px;
+    width: calc(100% - 32px);
+    border-radius: 20px;
   }
   .philosophy {
     padding: 50px 25px;
@@ -622,6 +768,7 @@ body {
   }
   .story-image {
     height: 280px;
+    padding: 0 20px 20px;
   }
   .values {
     padding: 50px 25px;
@@ -636,7 +783,7 @@ body {
     grid-template-columns: 1fr;
   }
   .testimonial-image {
-    height: 250px;
+    min-height: 260px;
   }
   .testimonial-content {
     padding: 25px;

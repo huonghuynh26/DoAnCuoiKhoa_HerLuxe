@@ -23,7 +23,13 @@ const testimonials = [
 
 export default function About() {
   const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState("next"); // hướng chuyển để chọn animation
   const item = testimonials[index];
+  const total = testimonials.length;
+  const goTo = (target, direction) => {
+    setDir(direction || (target > index ? "next" : "prev"));
+    setIndex((target + total) % total);
+  };
   return (
     <div className="page about-page">
       <Header />
@@ -145,11 +151,11 @@ export default function About() {
           <div className="testimonial-slider">
             <button
               className="testimonial-btn prev"
-              onClick={() => setIndex((index + 2) % 3)}
+              onClick={() => goTo(index - 1, "prev")}
             >
               <i className="fa-solid fa-chevron-left"></i>
             </button>
-            <div className="testimonial-box">
+            <div className={`testimonial-box dir-${dir}`} key={index}>
               <div className="testimonial-image">
                 <img src={item.image} alt={item.name} />
               </div>
@@ -158,11 +164,14 @@ export default function About() {
                 <p>{item.text}</p>
                 <h3>{item.name}</h3>
                 <span>HerLuxe Customer</span>
+                <small className="testimonial-count">
+                  0{index + 1} / 0{total}
+                </small>
               </div>
             </div>
             <button
               className="testimonial-btn next"
-              onClick={() => setIndex((index + 1) % 3)}
+              onClick={() => goTo(index + 1, "next")}
             >
               <i className="fa-solid fa-chevron-right"></i>
             </button>
@@ -172,7 +181,7 @@ export default function About() {
               <button
                 key={i}
                 className={`dot ${i === index ? "active" : ""}`}
-                onClick={() => setIndex(i)}
+                onClick={() => goTo(i)}
                 aria-label={`Testimonial ${i + 1}`}
               ></button>
             ))}

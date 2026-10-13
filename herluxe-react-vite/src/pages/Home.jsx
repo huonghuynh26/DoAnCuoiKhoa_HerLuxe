@@ -87,7 +87,7 @@ export default function Home() {
             </span>
           </div>
           <div>
-            <i className="fa-solid fa-sparkles"></i>
+            <i className="fa-solid fa-wand-magic-sparkles"></i>
             <span>
               Small rituals
               <br />
@@ -187,7 +187,7 @@ export default function Home() {
               </p>
               <Link to="/about">
                 Read our philosophy{" "}
-                <i className="fa-solid fa-arrow-up-right"></i>
+                <i className="fa-solid fa-arrow-up-right-from-square"></i>
               </Link>
             </div>
             <div className="mini-product-list">
