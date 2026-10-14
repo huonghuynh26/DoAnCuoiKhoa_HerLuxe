@@ -7,8 +7,20 @@ const bannerImages = {
   "lips-of-the-day": "/images/lips.jpg",
 };
 
+// Ô thứ 4: đổi "Best Sellers" thành "Body Care" và chỉ lọc sản phẩm thuộc Body care
+const bodyCare = {
+  id: "body-care",
+  title: "Body Care",
+  subtitle: "Soothing lotions, oils and scrubs for head-to-toe softness.",
+  category: "Body care",
+  image: "/images/bodycare.jpg",
+};
+
 export const collections = collectionsJson.map((item, index) => ({
-  ...item,
-  image: bannerImages[item.id] || item.image,
+  ...(item.id === "best-sellers" ? bodyCare : item),
+  image:
+    item.id === "best-sellers"
+      ? bodyCare.image
+      : bannerImages[item.id] || item.image,
   accent: ["rose", "sand", "plum", "ivory"][index],
 }));

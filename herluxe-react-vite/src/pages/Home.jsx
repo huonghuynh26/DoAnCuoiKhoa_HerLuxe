@@ -42,37 +42,11 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="hero-art">
-            <div className="hero-art-glow"></div>
-            <div className="hero-stamp">
-              HER
-              <br />
-              LUXE
-            </div>
-            <div className="hero-image-frame">
-              <img
-                src="/images/display.png"
-                alt="HerLuxe featured beauty product"
-              />
-            </div>
-            <div className="hero-product-note">
-              <span>01 / 04</span>
-              <strong>
-                Everyday
-                <br />
-                radiance
-              </strong>
-              <small>Makeup edit</small>
-            </div>
-            <div className="hero-float-card">
-              <span>Editor's pick</span>
-              <strong>
-                Rose veil
-                <br />
-                cream blush
-              </strong>
-              <b>$24.00</b>
-            </div>
+          <div className="hero-banner">
+            <img
+              src="/images/banner2.png"
+              alt="HerLuxe featured beauty banner"
+            />
           </div>
         </section>
 
@@ -137,7 +111,7 @@ export default function Home() {
         {/* SKINCARE FEATURE SECTION */}
         <section className="feature-band" id="skincare">
           <div className="feature-image">
-            <img src="/images/staff.png" alt="HerLuxe beauty ritual" />
+            <img src="/images/banner3.png" alt="HerLuxe beauty ritual" />
           </div>
           <div className="feature-copy">
             <p className="eyebrow">A better beauty ritual</p>

@@ -49,7 +49,7 @@ export default function About() {
           </Link>
         </section>
         <div className="about-image">
-          <img src="/images/display.png" alt="HerLuxe Beauty" />
+          <img src="/images/banner5.png" alt="HerLuxe Beauty" />
         </div>
         <section className="philosophy">
           <h2>Our Philosophy</h2>
@@ -118,7 +118,7 @@ export default function About() {
             </div>
           </div>
           <div className="story-image">
-            <img src="/images/staff.png" alt="HerLuxe Story" />
+            <img src="/images/banner6.png" alt="HerLuxe Story" />
           </div>
         </section>
         <section className="values">
