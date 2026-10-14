@@ -153,15 +153,18 @@ export default function Home() {
           </div>
           <div className="best-seller-layout">
             <div className="editorial-tile">
-              <span className="editorial-number">02</span>
-              <p>
+              <p className="editorial-eyebrow">Our message</p>
+              <p className="editorial-quote">
                 Beauty is not
                 <br />
                 <em>one-size-fits-all.</em>
               </p>
+              <p className="editorial-sub">
+                Choose what feels like you. Keep what works. Make room for the
+                little rituals that make you feel good.
+              </p>
               <Link to="/about">
-                Read our philosophy{" "}
-                <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                Read our philosophy <i className="fa-solid fa-arrow-right"></i>
               </Link>
             </div>
             <div className="mini-product-list">
