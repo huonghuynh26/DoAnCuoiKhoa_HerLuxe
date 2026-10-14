@@ -1145,3 +1145,24 @@ button {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   HOVER ĐỔI SANG ẢNH THỨ 2
+   ========================================================================== */
+.product-visual .pv-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transition:
+    opacity 420ms ease,
+    transform 300ms ease;
+}
+.product-card:hover .product-visual.has-hover-image .pv-hover {
+  opacity: 1;
+}
+.product-visual.has-hover-image .pv-cover {
+  transition:
+    opacity 420ms ease,
+    transform 300ms ease;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -7,6 +7,7 @@ import { useAuth } from "../components/AuthContext";
 import { useCart } from "../components/CartContext";
 import { categories } from "../resources/products";
 import { useProducts } from "../resources/mockStore";
+import { useGallery } from "../resources/productImages";
 
 // So khớp tag không phân biệt hoa/thường và khoảng trắng ("Best seller" = "Bestseller")
 const normalize = (value) =>
@@ -188,10 +189,7 @@ function ProductInfo({ product }) {
   };
   return (
     <div className="product-detail-container">
-      <div className={`product-detail-image ${soldOut ? "is-sold-out" : ""}`}>
-        <img src={product.image} alt={product.name} />
-        {soldOut && <span className="sold-out-badge">Out of stock</span>}
-      </div>
+      <ProductGallery product={product} soldOut={soldOut} />
       <div className="product-detail-info">
         <p className="product-category">{product.category}</p>
         <h1>{product.name}</h1>
@@ -245,6 +243,99 @@ function ProductInfo({ product }) {
           ← Continue browsing
         </Link>
       </div>
+    </div>
+  );
+}
+
+// Thư viện ảnh: trượt bằng nút, chấm/ảnh nhỏ, phím mũi tên hoặc vuốt (kéo) trên ảnh lớn.
+function ProductGallery({ product, soldOut }) {
+  const images = useGallery(product);
+  const [index, setIndex] = useState(0);
+  const drag = useRef(null);
+  const count = images.length;
+  const current = Math.min(index, Math.max(0, count - 1));
+  const go = (target) => setIndex((target + count) % count);
+
+  useEffect(() => setIndex(0), [product.id]);
+
+  const onPointerDown = (event) => {
+    drag.current = { x: event.clientX, moved: false };
+  };
+  const onPointerUp = (event) => {
+    if (!drag.current || count < 2) return;
+    const delta = event.clientX - drag.current.x;
+    drag.current = null;
+    if (Math.abs(delta) > 45) go(current + (delta < 0 ? 1 : -1));
+  };
+  const onKeyDown = (event) => {
+    if (count < 2) return;
+    if (event.key === "ArrowLeft") go(current - 1);
+    if (event.key === "ArrowRight") go(current + 1);
+  };
+
+  return (
+    <div className="product-gallery">
+      <div
+        className={`product-detail-image ${soldOut ? "is-sold-out" : ""} ${count > 1 ? "is-gallery" : ""}`}
+        tabIndex={count > 1 ? 0 : undefined}
+        onKeyDown={onKeyDown}
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerLeave={() => (drag.current = null)}
+      >
+        <div
+          className="gallery-track"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {(count ? images : [product.image]).map((src, i) => (
+            <img
+              key={`${i}-${src.slice(-24)}`}
+              src={src}
+              alt={`${product.name} ${i + 1}`}
+              draggable={false}
+            />
+          ))}
+        </div>
+        {soldOut && <span className="sold-out-badge">Out of stock</span>}
+        {count > 1 && (
+          <>
+            <button
+              type="button"
+              className="gallery-arrow prev"
+              onClick={() => go(current - 1)}
+              aria-label="Previous image"
+            >
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              type="button"
+              className="gallery-arrow next"
+              onClick={() => go(current + 1)}
+              aria-label="Next image"
+            >
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+            <span className="gallery-counter">
+              {current + 1} / {count}
+            </span>
+          </>
+        )}
+      </div>
+      {count > 1 && (
+        <div className="gallery-thumbs">
+          {images.map((src, i) => (
+            <button
+              type="button"
+              key={`${i}-${src.slice(-24)}`}
+              className={i === current ? "active" : ""}
+              onClick={() => setIndex(i)}
+              aria-label={`Show image ${i + 1}`}
+            >
+              <img src={src} alt="" draggable={false} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

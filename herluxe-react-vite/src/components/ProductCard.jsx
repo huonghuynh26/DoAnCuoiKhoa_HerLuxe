@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
+import { hoverImageOf, useGallery } from "../resources/productImages";
 
 const palette = {
   Lips: "rose",
@@ -23,6 +24,9 @@ export default function ProductCard({ product, compact = false }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [notice, setNotice] = useState(false);
+  const gallery = useGallery(product);
+  const cover = gallery[0];
+  const hoverImage = hoverImageOf(product, gallery);
   const soldOut = product.stock != null && Number(product.stock) <= 0;
   useEffect(() => {
     if (!notice) return undefined;
@@ -52,8 +56,22 @@ export default function ProductCard({ product, compact = false }) {
         className="product-card-click-area"
       >
         {product.tag && <span className="product-tag">{product.tag}</span>}
-        <div className={`product-visual ${visual[product.category] || ""}`}>
-          <img src={product.image} alt={product.name} />
+        <div
+          className={`product-visual ${visual[product.category] || ""} ${hoverImage ? "has-hover-image" : ""}`}
+        >
+          <img
+            className="pv-cover"
+            src={cover || product.image}
+            alt={product.name}
+          />
+          {hoverImage && (
+            <img
+              className="pv-hover"
+              src={hoverImage}
+              alt=""
+              aria-hidden="true"
+            />
+          )}
           {soldOut && (
             <span className="sold-out-badge" aria-label="Out of stock">
               Out of stock

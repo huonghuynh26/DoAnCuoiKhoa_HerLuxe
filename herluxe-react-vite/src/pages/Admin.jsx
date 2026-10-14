@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,7 +12,8 @@ import {
   saveProducts,
   saveUsers,
 } from "../resources/mockStore";
-import ProductImageField from "../components/ProductImageField";
+import ProductGalleryField from "../components/ProductGalleryField";
+import { resolveGallery } from "../resources/productImages";
 import {
   createProduct,
   deleteProduct,
@@ -51,13 +52,15 @@ const imageOptions = [
   "/images/bodycare/handcream.png",
   "/images/bodycare/sunsreen.png",
 ];
+const DEFAULT_IMAGE = "/images/skincare/serum.png";
 const emptyProduct = {
   id: "",
   name: "",
   category: "Skincare",
   tag: "New",
   price: 0,
-  image: "/images/skincare/serum.png",
+  image: "",
+  images: [],
   shortDescription: "",
   description: "",
   stock: 0,
@@ -276,8 +279,12 @@ export default function Admin() {
 
   const saveProduct = async (event, form, editing) => {
     event.preventDefault();
+    // Bộ ảnh: ảnh đầu là ảnh bìa (product.image), ảnh thứ hai hiện khi hover.
+    const gallery = (form.images || []).filter(Boolean);
     const nextProduct = {
       ...form,
+      images: gallery.length ? gallery : [form.image || DEFAULT_IMAGE],
+      image: gallery[0] || form.image || DEFAULT_IMAGE,
       id: editing ? form.id : form.id || `${slugify(form.name)}-${Date.now()}`,
       name: form.name.trim(),
       price: Math.max(0, Number(form.price) || 0),
@@ -288,7 +295,11 @@ export default function Admin() {
       : [...products, nextProduct];
     // Lưu tạm trong trình duyệt để giao diện cập nhật ngay.
     setProducts(next);
-    saveProducts(next);
+    try {
+      saveProducts(next);
+    } catch {
+      // Nhiều ảnh có thể vượt dung lượng localStorage; vẫn tiếp tục đồng bộ lên API.
+    }
     setProductModal(null);
     try {
       // Ghi lên API MindX (thêm mới = POST, sửa = PUT theo _id).
@@ -297,7 +308,11 @@ export default function Admin() {
       // Đọc lại để lấy _id server vừa tạo, dùng cho lần sửa/xóa sau.
       const fresh = await fetchProducts();
       if (fresh.length) {
-        saveProducts(fresh);
+        try {
+          saveProducts(fresh);
+        } catch {
+          /* localStorage đầy: dữ liệu vẫn nằm trên API */
+        }
         setProducts(fresh);
       }
       notify(
@@ -1459,9 +1474,32 @@ function ResourcesPanel({ exportResources, importResources, resetData }) {
 }
 
 function ProductModal({ editing, product, onClose, onSave }) {
-  const [form, setForm] = useState(product);
+  const [form, setForm] = useState(() => ({
+    ...product,
+    images:
+      Array.isArray(product.images) && product.images.length
+        ? product.images
+        : product.image
+          ? [product.image]
+          : [],
+  }));
+  const touchedImages = useRef(false);
   const update = (key, value) =>
     setForm((current) => ({ ...current, [key]: value }));
+
+  // Sản phẩm có sẵn file tên1 / tên2 trong thư mục images: nạp đủ bộ ảnh vào form để lưu không làm mất ảnh.
+  useEffect(() => {
+    if (!editing || (Array.isArray(product.images) && product.images.length))
+      return undefined;
+    let active = true;
+    resolveGallery(product).then((list) => {
+      if (active && !touchedImages.current && list.length)
+        setForm((current) => ({ ...current, images: list }));
+    });
+    return () => {
+      active = false;
+    };
+  }, [editing, product]);
   return (
     <div
       className="admin-modal-backdrop"
@@ -1548,9 +1586,16 @@ function ProductModal({ editing, product, onClose, onSave }) {
                 )}
               </select>
             </label>
-            <ProductImageField
-              value={form.image}
-              onChange={(image) => update("image", image)}
+            <ProductGalleryField
+              value={form.images}
+              onChange={(images) => {
+                touchedImages.current = true;
+                setForm((current) => ({
+                  ...current,
+                  images,
+                  image: images[0] || "",
+                }));
+              }}
             />
           </div>
           <label>
