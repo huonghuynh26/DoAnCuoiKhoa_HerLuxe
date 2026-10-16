@@ -7,6 +7,7 @@ import { useAuth } from "../components/AuthContext";
 import { useCart } from "../components/CartContext";
 import { categories } from "../resources/products";
 import { useProducts } from "../resources/mockStore";
+import { matchesSearch } from "../resources/text";
 import { useGallery } from "../resources/productImages";
 
 // So khớp tag không phân biệt hoa/thường và khoảng trắng ("Best seller" = "Bestseller")
@@ -29,16 +30,22 @@ export default function Products() {
     ) || tag;
   const search = params.get("search") || "";
   const selectedId = params.get("id");
+  // Ô tìm kiếm giữ chữ trong state riêng để gõ dấu tiếng Việt (Telex/VNI) không bị ngắt,
+  // rồi mới đồng bộ lên URL.
+  const [searchText, setSearchText] = useState(search);
+  useEffect(() => {
+    setSearchText(search);
+  }, [search]);
   const filtered = useMemo(
     () =>
       products.filter(
         (item) =>
           (category === "All" || item.category === category) &&
           (!tag || normalize(item.tag) === normalize(tag)) &&
-          (!search ||
-            `${item.name} ${item.description}`
-              .toLowerCase()
-              .includes(search.toLowerCase())),
+          matchesSearch(
+            `${item.name} ${item.description} ${item.category}`,
+            search,
+          ),
       ),
     [products, category, tag, search],
   );
@@ -99,13 +106,14 @@ export default function Products() {
             ))}
           </div>
           <input
-            value={search}
+            value={searchText}
             onChange={(e) => {
+              const value = e.target.value;
+              setSearchText(value);
               const next = new URLSearchParams(params);
-              e.target.value
-                ? next.set("search", e.target.value)
-                : next.delete("search");
-              setParams(next);
+              value.trim() ? next.set("search", value) : next.delete("search");
+              next.delete("id");
+              setParams(next, { replace: true });
             }}
             placeholder="Search products..."
           />

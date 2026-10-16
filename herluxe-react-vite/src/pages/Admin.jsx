@@ -14,6 +14,7 @@ import {
 } from "../resources/mockStore";
 import ProductGalleryField from "../components/ProductGalleryField";
 import { resolveGallery } from "../resources/productImages";
+import { matchesSearch } from "../resources/text";
 import {
   createProduct,
   deleteProduct,
@@ -215,13 +216,11 @@ export default function Admin() {
   const trend = useMemo(() => makeTrend(orders), [orders]);
 
   const filteredProducts = useMemo(() => {
-    const query = productSearch.toLowerCase().trim();
     return products.filter((product) => {
-      const matchesQuery =
-        !query ||
-        `${product.name} ${product.id} ${product.category}`
-          .toLowerCase()
-          .includes(query);
+      const matchesQuery = matchesSearch(
+        `${product.name} ${product.id} ${product.category}`,
+        productSearch,
+      );
       const matchesCategory =
         productCategory === "All" || product.category === productCategory;
       const matchesStock =
@@ -234,13 +233,11 @@ export default function Admin() {
   }, [products, productSearch, productCategory, productStockFilter]);
 
   const filteredOrders = useMemo(() => {
-    const query = orderSearch.toLowerCase().trim();
     return orders.filter((order) => {
-      const matchesQuery =
-        !query ||
-        `${order.id} ${order.customer} ${order.email}`
-          .toLowerCase()
-          .includes(query);
+      const matchesQuery = matchesSearch(
+        `${order.id} ${order.customer} ${order.email}`,
+        orderSearch,
+      );
       const matchesStatus =
         orderStatus === "All" || order.status === orderStatus;
       return matchesQuery && matchesStatus;
@@ -248,14 +245,12 @@ export default function Admin() {
   }, [orders, orderSearch, orderStatus]);
 
   const customerRows = useMemo(() => {
-    const query = customerSearch.toLowerCase().trim();
     return users
-      .filter(
-        (user) =>
-          !query ||
-          `${user.name} ${user.email} ${user.phone || ""}`
-            .toLowerCase()
-            .includes(query),
+      .filter((user) =>
+        matchesSearch(
+          `${user.name} ${user.email} ${user.phone || ""}`,
+          customerSearch,
+        ),
       )
       .map((user) => {
         const customerOrders = orders.filter(
